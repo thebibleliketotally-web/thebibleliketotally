@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Testament — The Bible, Like Totally</title>
+<meta name="description" content="All 27 Books of the New Testament — in a totally chill, relatable voice. From Matthew to Revelation, rooted in the KJV and re-imagined in modern language.">
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .books-section { background: var(--white); }
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 56px 0 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--off-white);
+  }
+  .category-header:first-of-type { margin-top: 0; }
+  .category-icon { font-size: 28px; }
+  .category-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--navy);
+  }
+  .category-header .cat-count {
+    font-size: 12px; font-weight: 700; color: var(--text-muted);
+    background: var(--off-white); padding: 4px 12px;
+    border-radius: 50px; margin-left: auto;
+  }
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .book-card {
+    background: var(--white);
+    border: 1.5px solid rgba(27,42,74,0.1);
+    border-radius: 16px;
+    padding: 22px 20px;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+  .book-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--purple);
+    transition: width 0.3s;
+  }
+  .book-card:hover {
+    border-color: var(--purple);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(91,45,142,0.12);
+  }
+  .book-card.teal-accent::before { background: var(--teal); }
+  .book-card.teal-accent:hover { border-color: var(--teal); box-shadow: 0 10px 30px rgba(14,155,138,0.12); }
+  .book-card.amber-accent::before { background: var(--amber); }
+  .book-card.amber-accent:hover { border-color: var(--amber); box-shadow: 0 10px 30px rgba(201,146,26,0.12); }
+  .book-number { font-size: 11px; font-weight: 800; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 6px; display: block; }
+  .book-name { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 900; color: var(--navy); margin-bottom: 6px; line-height: 1.2; }
+  .book-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+  .book-arrow { position: absolute; bottom: 14px; right: 16px; font-size: 14px; color: var(--purple); opacity: 0; transition: opacity 0.2s, transform 0.2s; }
+  .book-card:hover .book-arrow { opacity: 1; transform: translateX(3px); }
+  .book-card.teal-accent:hover .book-arrow { color: var(--teal); }
+  .book-card.amber-accent:hover .book-arrow { color: var(--amber); }
+
+  .ot-promo {
+    background: linear-gradient(135deg, var(--navy) 0%, #2A3F6F 100%);
+    border-radius: 24px;
+    padding: 48px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 64px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .ot-promo:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(27,42,74,0.2); }
+  .ot-promo-text h3 { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 900; color: var(--white); margin-bottom: 10px; }
+  .ot-promo-text p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .ot-promo-cta { background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.25); color: var(--white); padding: 14px 28px; border-radius: 50px; font-weight: 800; font-size: 14px; white-space: nowrap; transition: background 0.2s; font-family: 'Nunito', sans-serif; }
+  .ot-promo:hover .ot-promo-cta { background: rgba(255,255,255,0.2); }
+
+  @media (max-width: 700px) {
+    .books-grid { grid-template-columns: 1fr 1fr; }
+    .ot-promo { flex-direction: column; padding: 36px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="announcement-bar">
+  🌊 The entire Bible — verse by verse — in a totally chill, relatable voice.
+  <a href="index.html">Back to Home →</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="The Bible, Like Totally">
+    <div class="nav-logo-text">
+      <span class="brand-name">The Bible, Like Totally</span>
+      <span class="brand-tagline">A totally chill take on timeless truth</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="old-testament.html">Old Testament</a></li>
+    <li><a href="new-testament.html" class="active">New Testament</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank">Listen on YouTube</a></li>
+    <li><a href="https://thebibleliketotally.com" class="nav-cta">Join Today →</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="background: linear-gradient(135deg, var(--purple) 0%, #2A1A5E 60%, #1A0A3E 100%);">
+  <div class="page-hero-inner">
+    <span class="section-label">27 Books</span>
+    <h1>The <em>New Testament</em></h1>
+    <span class="tagline">The story of Jesus — totally chill.</span>
+    <p>From the birth of Jesus in Matthew to the final vision in Revelation — all 27 Books in a voice that makes the greatest story ever told feel surprisingly today.</p>
+  </div>
+</div>
+
+<div class="trust-bar">
+  <div class="trust-item"><span class="icon">✨</span> 27 Books</div>
+  <div class="trust-item"><span class="icon">🌊</span> Rooted in KJV</div>
+  <div class="trust-item"><span class="icon">🎧</span> Audio on YouTube</div>
+  <div class="trust-item"><span class="icon">✝️</span> Verse by Verse</div>
+</div>
+
+<!-- BOOKS -->
+<section class="books-section fade-in">
+
+  <!-- THE GOSPELS -->
+  <div class="category-header">
+    <span class="category-icon">✨</span>
+    <h2>The Gospels</h2>
+    <span class="cat-count">4 Books</span>
+  </div>
+  <div class="books-grid">
+    <a href="https://thebibleliketotally.com/new-testament/matthew/" class="book-card teal-accent">
+      <span class="book-number">NT Book 1</span>
+      <div class="book-name">Matthew</div>
+      <div class="book-desc">Jesus Christ — the ultimate origin story. It all started here.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/mark/" class="book-card teal-accent">
+      <span class="book-number">NT Book 2</span>
+      <div class="book-name">Mark</div>
+      <div class="book-desc">No long intro. No family tree. Just — here kicks off the good news.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/luke/" class="book-card teal-accent">
+      <span class="book-number">NT Book 3</span>
+      <div class="book-name">Luke</div>
+      <div class="book-desc">An eyewitness tracked every detail. So you could be solid on the truth.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/john/" class="book-card teal-accent">
+      <span class="book-number">NT Book 4</span>
+      <div class="book-name">John</div>
+      <div class="book-desc">In the beginning was the Word. The darkness hasn't totally figured it out.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="category-header">
+    <span class="category-icon">⚡</span>
+    <h2>History</h2>
+    <span class="cat-count">1 Book</span>
+  </div>
+  <div class="books-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+    <a href="https://thebibleliketotally.com/new-testament/acts/" class="book-card amber-accent">
+      <span class="book-number">NT Book 5</span>
+      <div class="book-name">Acts</div>
+      <div class="book-desc">Jesus left. The Holy Ghost showed up. And things got wild from there.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- PAUL'S LETTERS -->
+  <div class="category-header">
+    <span class="category-icon">✉️</span>
+    <h2>Paul's Letters</h2>
+    <span class="cat-count">13 Books</span>
+  </div>
+  <div class="books-grid">
+    <a href="https://thebibleliketotally.com/new-testament/romans/" class="book-card">
+      <span class="book-number">NT Book 6</span>
+      <div class="book-name">Romans</div>
+      <div class="book-desc">Paul had a lot to say to Rome. He said all of it.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-corinthians/" class="book-card">
+      <span class="book-number">NT Book 7</span>
+      <div class="book-name">1 Corinthians</div>
+      <div class="book-desc">Yo, Paul here. The church in Corinth had some issues. A lot of issues.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-corinthians/" class="book-card">
+      <span class="book-number">NT Book 8</span>
+      <div class="book-name">2 Corinthians</div>
+      <div class="book-desc">Paul wrote again. Because apparently the first letter wasn't enough.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/galatians/" class="book-card">
+      <span class="book-number">NT Book 9</span>
+      <div class="book-name">Galatians</div>
+      <div class="book-desc">Paul said — God gave me this job, not some dudes. Now listen up.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ephesians/" class="book-card">
+      <span class="book-number">NT Book 10</span>
+      <div class="book-name">Ephesians</div>
+      <div class="book-desc">God picked you out before the world was even a thing. Let that sink in.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/philippians/" class="book-card">
+      <span class="book-number">NT Book 11</span>
+      <div class="book-name">Philippians</div>
+      <div class="book-desc">Paul was in prison when he wrote this. And he was still stoked.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/colossians/" class="book-card">
+      <span class="book-number">NT Book 12</span>
+      <div class="book-name">Colossians</div>
+      <div class="book-desc">Jesus is not just a good vibe. He's the whole thing.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-thessalonians/" class="book-card">
+      <span class="book-number">NT Book 13</span>
+      <div class="book-name">1 Thessalonians</div>
+      <div class="book-desc">Paul heard they were riding the gospel wave strong. He had to write back.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-thessalonians/" class="book-card">
+      <span class="book-number">NT Book 14</span>
+      <div class="book-name">2 Thessalonians</div>
+      <div class="book-desc">They were confused about the end times. Paul was like — let me clarify.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-timothy/" class="book-card">
+      <span class="book-number">NT Book 15</span>
+      <div class="book-name">1 Timothy</div>
+      <div class="book-desc">Paul to Timmy — stop the bogus teachings. Like, right now.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-timothy/" class="book-card">
+      <span class="book-number">NT Book 16</span>
+      <div class="book-name">2 Timothy</div>
+      <div class="book-desc">Paul's final letter. He knew what was coming. He wrote it anyway.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/titus/" class="book-card">
+      <span class="book-number">NT Book 17</span>
+      <div class="book-name">Titus</div>
+      <div class="book-desc">Paul needed someone solid on the ground. Titus was the guy.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/philemon/" class="book-card">
+      <span class="book-number">NT Book 18</span>
+      <div class="book-name">Philemon</div>
+      <div class="book-desc">The shortest letter Paul ever wrote. Every single word counted.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- GENERAL EPISTLES -->
+  <div class="category-header">
+    <span class="category-icon">📜</span>
+    <h2>General Epistles</h2>
+    <span class="cat-count">8 Books</span>
+  </div>
+  <div class="books-grid">
+    <a href="https://thebibleliketotally.com/new-testament/hebrews/" class="book-card teal-accent">
+      <span class="book-number">NT Book 19</span>
+      <div class="book-name">Hebrews</div>
+      <div class="book-desc">Jesus is better. Than all of it. The whole letter makes that case.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/james/" class="book-card teal-accent">
+      <span class="book-number">NT Book 20</span>
+      <div class="book-name">James</div>
+      <div class="book-desc">Faith without works is, like, totally dead. James was not playing around.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-peter/" class="book-card teal-accent">
+      <span class="book-number">NT Book 21</span>
+      <div class="book-name">1 Peter</div>
+      <div class="book-desc">Scattered. Suffering. Struggling. Peter wrote to remind them who they were.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-peter/" class="book-card teal-accent">
+      <span class="book-number">NT Book 22</span>
+      <div class="book-name">2 Peter</div>
+      <div class="book-desc">Watch out for fake teachers. Peter had already spotted them.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-john/" class="book-card teal-accent">
+      <span class="book-number">NT Book 23</span>
+      <div class="book-name">1 John</div>
+      <div class="book-desc">God is light. God is love. John really needed you to know both.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-john/" class="book-card teal-accent">
+      <span class="book-number">NT Book 24</span>
+      <div class="book-name">2 John</div>
+      <div class="book-desc">Walk in truth. Don't let just anyone in. John said what he said.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/iii-john/" class="book-card teal-accent">
+      <span class="book-number">NT Book 25</span>
+      <div class="book-name">3 John</div>
+      <div class="book-desc">Gaius was doing great. Diotrephes was not. John noticed both.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/jude/" class="book-card teal-accent">
+      <span class="book-number">NT Book 26</span>
+      <div class="book-name">Jude</div>
+      <div class="book-desc">Jude had one thing to say — contend for the faith. He said it hard.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- PROPHECY -->
+  <div class="category-header">
+    <span class="category-icon">🌅</span>
+    <h2>Prophecy</h2>
+    <span class="cat-count">1 Book</span>
+  </div>
+  <div class="books-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
+    <a href="https://thebibleliketotally.com/new-testament/revelation/" class="book-card amber-accent">
+      <span class="book-number">NT Book 27</span>
+      <div class="book-name">Revelation</div>
+      <div class="book-desc">The last Book. The final vision. Nothing could prepare them for this.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- OT PROMO -->
+  <a href="old-testament.html" class="ot-promo">
+    <div class="ot-promo-text">
+      <h3>Explore the Old Testament 📖</h3>
+      <p>39 Books — from Creation to the Prophets. The foundation of everything that comes after.</p>
+    </div>
+    <span class="ot-promo-cta">Explore Old Testament →</span>
+  </a>
+
+</section>
+
+<!-- VERSE HIGHLIGHT -->
+<section class="verse-section fade-in">
+  <div class="inner">
+    <span class="big-q">"</span>
+    <blockquote>"God totally loved the world so much that he gave his one and only Son, so that anyone who, like, believes in him will not perish but will have everlasting forever life, bro."</blockquote>
+    <span class="cite">John 3:16</span>
+    <a href="https://thebibleliketotally.com/new-testament/john/" class="btn-white">📖 Read the Book of John</a>
+  </div>
+</section>
+
+<!-- EMAIL SIGNUP -->
+<section class="signup-section fade-in">
+  <div class="signup-inner">
+    <span class="section-label">Stay in the Know</span>
+    <h2 class="section-title">Like, totally stay in the now.</h2>
+    <p class="section-subtitle">New Books, new audio, new content — dropped weekly.</p>
+    <div class="signup-form">
+      <input type="email" placeholder="Your email address...">
+      <button type="button">Subscribe 🌊</button>
+    </div>
+    <p class="signup-note">No spam. No weirdness. Just Scripture, totally delivered.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="The Bible, Like Totally">
+      <p>A creative, respectful re-imagining of Scripture — blending modern language with timeless truth.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/thebible.liketotally/" target="_blank" class="social-btn">📘</a>
+        <a href="https://www.instagram.com/thebible_liketotally/" target="_blank" class="social-btn">📸</a>
+        <a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" class="social-btn">▶</a>
+        <a href="https://www.tiktok.com/@thebible_liketotally" target="_blank" class="social-btn">🎵</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>New Testament</h4>
+      <ul>
+        <li><a href="https://thebibleliketotally.com/new-testament/matthew/">Matthew</a></li>
+        <li><a href="https://thebibleliketotally.com/new-testament/john/">John</a></li>
+        <li><a href="https://thebibleliketotally.com/new-testament/acts/">Acts</a></li>
+        <li><a href="https://thebibleliketotally.com/new-testament/romans/">Romans</a></li>
+        <li><a href="https://thebibleliketotally.com/new-testament/revelation/">Revelation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Listen</h4>
+      <ul>
+        <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank">YouTube Channel</a></li>
+        <li><a href="https://www.youtube.com/@TheBibleLikeTotally/playlists" target="_blank">All Playlists</a></li>
+        <li><a href="https://www.tiktok.com/@thebible_liketotally" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about.html">About This Translation</a></li>
+        <li><a href="old-testament.html">Old Testament</a></li>
+        <li><a href="https://thebibleliketotally.com/terms-of-use/">Terms of Use</a></li>
+        <li><a href="https://thebibleliketotally.com/totally-contact-us/">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 <strong>The Bible, Like Totally.</strong> All Rights Reserved. All original content is protected under U.S. copyright law.</p>
+    <div class="footer-links">
+      <a href="https://thebibleliketotally.com/terms-of-use/">Terms of Use</a>
+      <a href="https://thebibleliketotally.com/privacy-policy/">Privacy Policy</a>
+      <a href="https://thebibleliketotally.com/totally-contact-us/">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

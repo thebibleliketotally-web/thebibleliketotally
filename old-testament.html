@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Old Testament — The Bible, Like Totally</title>
+<meta name="description" content="All 39 Books of the Old Testament — in a totally chill, relatable voice. From Genesis to Malachi, rooted in the KJV and re-imagined in modern language.">
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .books-section { background: var(--white); }
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 56px 0 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--off-white);
+  }
+  .category-header:first-of-type { margin-top: 0; }
+  .category-icon { font-size: 28px; }
+  .category-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--navy);
+  }
+  .category-header .cat-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    background: var(--off-white);
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-left: auto;
+  }
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .book-card {
+    background: var(--white);
+    border: 1.5px solid rgba(27,42,74,0.1);
+    border-radius: 16px;
+    padding: 22px 20px;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+  .book-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 4px; height: 100%;
+    background: var(--teal);
+    transition: width 0.3s;
+  }
+  .book-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(14,155,138,0.12);
+  }
+  .book-card:hover::before { width: 100%; opacity: 0.04; }
+  .book-card.purple-accent::before { background: var(--purple); }
+  .book-card.purple-accent:hover { border-color: var(--purple); box-shadow: 0 10px 30px rgba(91,45,142,0.12); }
+  .book-card.amber-accent::before { background: var(--amber); }
+  .book-card.amber-accent:hover { border-color: var(--amber); box-shadow: 0 10px 30px rgba(201,146,26,0.12); }
+  .book-number {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .book-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .book-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .book-arrow {
+    position: absolute;
+    bottom: 14px;
+    right: 16px;
+    font-size: 14px;
+    color: var(--teal);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  .book-card:hover .book-arrow { opacity: 1; transform: translateX(3px); }
+  .book-card.purple-accent:hover .book-arrow { color: var(--purple); }
+  .book-card.amber-accent:hover .book-arrow { color: var(--amber); }
+
+  .nt-promo {
+    background: linear-gradient(135deg, var(--purple) 0%, #3D1F6E 100%);
+    border-radius: 24px;
+    padding: 48px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 64px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .nt-promo:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(91,45,142,0.25); }
+  .nt-promo-text h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .nt-promo-text p { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.6; }
+  .nt-promo-cta {
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.25);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: background 0.2s;
+    font-family: 'Nunito', sans-serif;
+  }
+  .nt-promo:hover .nt-promo-cta { background: rgba(255,255,255,0.2); }
+
+  @media (max-width: 700px) {
+    .books-grid { grid-template-columns: 1fr 1fr; }
+    .nt-promo { flex-direction: column; padding: 36px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="announcement-bar">
+  🌊 The entire Bible — verse by verse — in a totally chill, relatable voice.
+  <a href="index.html">Back to Home →</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="The Bible, Like Totally">
+    <div class="nav-logo-text">
+      <span class="brand-name">The Bible, Like Totally</span>
+      <span class="brand-tagline">A totally chill take on timeless truth</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="old-testament.html" class="active">Old Testament</a></li>
+    <li><a href="new-testament.html">New Testament</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank">Listen on YouTube</a></li>
+    <li><a href="https://thebibleliketotally.com" class="nav-cta">Join Today →</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-label">39 Books</span>
+    <h1>The <em>Old Testament</em></h1>
+    <span class="tagline">From Creation to the Prophets — totally chill.</span>
+    <p>From the very beginning of everything to the last prophetic word before 400 years of silence — all 39 Books in a voice that finally makes them feel alive.</p>
+  </div>
+</div>
+
+<div class="trust-bar">
+  <div class="trust-item"><span class="icon">📖</span> 39 Books</div>
+  <div class="trust-item"><span class="icon">🌊</span> Rooted in KJV</div>
+  <div class="trust-item"><span class="icon">🎧</span> Audio on YouTube</div>
+  <div class="trust-item"><span class="icon">✝️</span> Verse by Verse</div>
+</div>
+
+<!-- BOOKS -->
+<section class="books-section fade-in">
+
+  <!-- THE LAW -->
+  <div class="category-header">
+    <span class="category-icon">⚖️</span>
+    <h2>The Law</h2>
+    <span class="cat-count">5 Books</span>
+  </div>
+  <div class="books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/genesis/" class="book-card">
+      <span class="book-number">Book 1</span>
+      <div class="book-name">Genesis</div>
+      <div class="book-desc">God built everything, Adam blamed everybody, and nobody read the instructions.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/exodus/" class="book-card">
+      <span class="book-number">Book 2</span>
+      <div class="book-name">Exodus</div>
+      <div class="book-desc">Pharaoh said no. God said hold my burning bush.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/leviticus/" class="book-card">
+      <span class="book-number">Book 3</span>
+      <div class="book-name">Leviticus</div>
+      <div class="book-desc">God had opinions about everything. Like, everything.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/numbers/" class="book-card">
+      <span class="book-number">Book 4</span>
+      <div class="book-name">Numbers</div>
+      <div class="book-desc">God counted His people. Twice. They were still a handful.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/deuteronomy/" class="book-card">
+      <span class="book-number">Book 5</span>
+      <div class="book-name">Deuteronomy</div>
+      <div class="book-desc">Moses had one final speech. It was not short.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="category-header">
+    <span class="category-icon">🏛️</span>
+    <h2>History Books</h2>
+    <span class="cat-count">12 Books</span>
+  </div>
+  <div class="books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/joshua/" class="book-card purple-accent">
+      <span class="book-number">Book 6</span>
+      <div class="book-name">Joshua</div>
+      <div class="book-desc">God said rise up, bro. Joshua said say less.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/judges/" class="book-card purple-accent">
+      <span class="book-number">Book 7</span>
+      <div class="book-name">Judges</div>
+      <div class="book-desc">Israel kept messing up. God kept showing up. Repeat.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ruth/" class="book-card purple-accent">
+      <span class="book-number">Book 8</span>
+      <div class="book-name">Ruth</div>
+      <div class="book-desc">She had every reason to leave. She stayed anyway.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/i-samuel/" class="book-card purple-accent">
+      <span class="book-number">Book 9</span>
+      <div class="book-name">1 Samuel</div>
+      <div class="book-desc">Israel wanted a king. God said you sure about that?</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ii-samuel/" class="book-card purple-accent">
+      <span class="book-number">Book 10</span>
+      <div class="book-name">2 Samuel</div>
+      <div class="book-desc">David got the crown. Then things got complicated.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/i-kings/" class="book-card purple-accent">
+      <span class="book-number">Book 11</span>
+      <div class="book-name">1 Kings</div>
+      <div class="book-desc">Solomon had it all and still fumbled the bag.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ii-kings/" class="book-card purple-accent">
+      <span class="book-number">Book 12</span>
+      <div class="book-name">2 Kings</div>
+      <div class="book-desc">Kingdom after kingdom. Bad decision after bad decision.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/i-chronicles/" class="book-card purple-accent">
+      <span class="book-number">Book 13</span>
+      <div class="book-name">1 Chronicles</div>
+      <div class="book-desc">The ultimate family tree nobody asked for but everybody needed.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ii-chronicles/" class="book-card purple-accent">
+      <span class="book-number">Book 14</span>
+      <div class="book-name">2 Chronicles</div>
+      <div class="book-desc">The whole kingdom saga, but make it extra.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ezra/" class="book-card purple-accent">
+      <span class="book-number">Book 15</span>
+      <div class="book-name">Ezra</div>
+      <div class="book-desc">God's people were a total mess. God rebuilt them anyway.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/nehemiah/" class="book-card purple-accent">
+      <span class="book-number">Book 16</span>
+      <div class="book-name">Nehemiah</div>
+      <div class="book-desc">The wall was broken. The people were broken. He fixed both.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/esther/" class="book-card purple-accent">
+      <span class="book-number">Book 17</span>
+      <div class="book-name">Esther</div>
+      <div class="book-desc">Queen Vashti said no. Esther said watch this.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- WISDOM & POETRY -->
+  <div class="category-header">
+    <span class="category-icon">📜</span>
+    <h2>Wisdom &amp; Poetry</h2>
+    <span class="cat-count">5 Books</span>
+  </div>
+  <div class="books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/job/" class="book-card amber-accent">
+      <span class="book-number">Book 18</span>
+      <div class="book-name">Job</div>
+      <div class="book-desc">Satan bet God that Job would break. Job did not break.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/psalms/" class="book-card amber-accent">
+      <span class="book-number">Book 19</span>
+      <div class="book-name">Psalms</div>
+      <div class="book-desc">Grateful, terrified, joyful, devastated — David had all the feels.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/proverbs/" class="book-card amber-accent">
+      <span class="book-number">Book 20</span>
+      <div class="book-name">Proverbs</div>
+      <div class="book-desc">Solomon dropping divine wisdom like it was his full-time vibe.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ecclesiastes/" class="book-card amber-accent">
+      <span class="book-number">Book 21</span>
+      <div class="book-name">Ecclesiastes</div>
+      <div class="book-desc">Everything is pointless. Ultra-vanity, bro. And yet — keep reading.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/song-of-solomon/" class="book-card amber-accent">
+      <span class="book-number">Book 22</span>
+      <div class="book-name">Song of Solomon</div>
+      <div class="book-desc">The Bible has a love poem. It's basically Solomon's mixtape of heart eyes.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- MAJOR PROPHETS -->
+  <div class="category-header">
+    <span class="category-icon">🔥</span>
+    <h2>Major Prophets</h2>
+    <span class="cat-count">5 Books</span>
+  </div>
+  <div class="books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/isaiah/" class="book-card">
+      <span class="book-number">Book 23</span>
+      <div class="book-name">Isaiah</div>
+      <div class="book-desc">God was not holding back. Isaiah was taking notes.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/jeremiah/" class="book-card">
+      <span class="book-number">Book 24</span>
+      <div class="book-name">Jeremiah</div>
+      <div class="book-desc">God kept warning them. They kept not listening. Jeremiah was over it.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/lamentations/" class="book-card">
+      <span class="book-number">Book 25</span>
+      <div class="book-name">Lamentations</div>
+      <div class="book-desc">Jerusalem was gone. Jeremiah had feelings about that. All of them.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ezekiel/" class="book-card">
+      <span class="book-number">Book 26</span>
+      <div class="book-name">Ezekiel</div>
+      <div class="book-desc">God showed Ezekiel some things. Wild, gnarly, unbelievable things.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/daniel/" class="book-card">
+      <span class="book-number">Book 27</span>
+      <div class="book-name">Daniel</div>
+      <div class="book-desc">Total legend bro. Survived Babylon, decoded dreams, never lost his vibe with God.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- MINOR PROPHETS -->
+  <div class="category-header">
+    <span class="category-icon">🕊️</span>
+    <h2>Minor Prophets</h2>
+    <span class="cat-count">12 Books</span>
+  </div>
+  <div class="books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/hosea/" class="book-card purple-accent">
+      <span class="book-number">Book 28</span>
+      <div class="book-name">Hosea</div>
+      <div class="book-desc">God told Hosea to marry someone who would leave. It was a whole lesson.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/joel/" class="book-card purple-accent">
+      <span class="book-number">Book 29</span>
+      <div class="book-name">Joel</div>
+      <div class="book-desc">Locusts. Fire. Darkness. Then God said pour out My Spirit.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/amos/" class="book-card purple-accent">
+      <span class="book-number">Book 30</span>
+      <div class="book-name">Amos</div>
+      <div class="book-desc">Amos was not a prophet. Until God said actually, you are.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/obadiah/" class="book-card purple-accent">
+      <span class="book-number">Book 31</span>
+      <div class="book-name">Obadiah</div>
+      <div class="book-desc">The shortest Book in the Old Testament. Edom still got the message.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/jonah/" class="book-card purple-accent">
+      <span class="book-number">Book 32</span>
+      <div class="book-name">Jonah</div>
+      <div class="book-desc">God said go. Jonah said no. A fish said get in.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/micah/" class="book-card purple-accent">
+      <span class="book-number">Book 33</span>
+      <div class="book-name">Micah</div>
+      <div class="book-desc">Act justly. Love mercy. Walk humbly. That was literally it.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/nahum/" class="book-card purple-accent">
+      <span class="book-number">Book 34</span>
+      <div class="book-name">Nahum</div>
+      <div class="book-desc">Nineveh got a warning. They did not vibe with it.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/habakkuk/" class="book-card purple-accent">
+      <span class="book-number">Book 35</span>
+      <div class="book-name">Habakkuk</div>
+      <div class="book-desc">Habakkuk asked God some hard questions. God actually answered.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/zephaniah/" class="book-card purple-accent">
+      <span class="book-number">Book 36</span>
+      <div class="book-name">Zephaniah</div>
+      <div class="book-desc">The Day of the LORD was coming. Zephaniah needed people to know that.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/haggai/" class="book-card purple-accent">
+      <span class="book-number">Book 37</span>
+      <div class="book-name">Haggai</div>
+      <div class="book-desc">The Temple was in ruins. God said what are you waiting for?</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/zechariah/" class="book-card purple-accent">
+      <span class="book-number">Book 38</span>
+      <div class="book-name">Zechariah</div>
+      <div class="book-desc">Visions, prophecies, and a future nobody saw coming.</div>
+      <span class="book-arrow">→</span>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/malachi/" class="book-card purple-accent">
+      <span class="book-number">Book 39</span>
+      <div class="book-name">Malachi</div>
+      <div class="book-desc">God's final word before 400 years of silence. Make it count.</div>
+      <span class="book-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- NT PROMO -->
+  <a href="new-testament.html" class="nt-promo">
+    <div class="nt-promo-text">
+      <h3>Ready for the New Testament? ✨</h3>
+      <p>27 Books. The Gospels, the Letters, and Revelation — in the same totally chill, relatable voice.</p>
+    </div>
+    <span class="nt-promo-cta">Explore New Testament →</span>
+  </a>
+
+</section>
+
+<!-- VERSE HIGHLIGHT -->
+<section class="verse-section fade-in">
+  <div class="inner">
+    <span class="big-q">"</span>
+    <blockquote>"So, like, in the beginning, God, you know, totally created the heavens and the earth. Then God was all, 'Let there be light,' and boom, there was light."</blockquote>
+    <span class="cite">Genesis 1:1–3</span>
+    <a href="https://thebibleliketotally.com/old-testament/genesis/" class="btn-white">📖 Read Genesis</a>
+  </div>
+</section>
+
+<!-- EMAIL SIGNUP -->
+<section class="signup-section fade-in">
+  <div class="signup-inner">
+    <span class="section-label">Stay in the Know</span>
+    <h2 class="section-title">Like, totally stay in the now.</h2>
+    <p class="section-subtitle">New Books, new audio, new content — dropped weekly.</p>
+    <div class="signup-form">
+      <input type="email" placeholder="Your email address...">
+      <button type="button">Subscribe 🌊</button>
+    </div>
+    <p class="signup-note">No spam. No weirdness. Just Scripture, totally delivered.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="The Bible, Like Totally">
+      <p>A creative, respectful re-imagining of Scripture — blending modern language with timeless truth.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/thebible.liketotally/" target="_blank" class="social-btn">📘</a>
+        <a href="https://www.instagram.com/thebible_liketotally/" target="_blank" class="social-btn">📸</a>
+        <a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" class="social-btn">▶</a>
+        <a href="https://www.tiktok.com/@thebible_liketotally" target="_blank" class="social-btn">🎵</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Old Testament</h4>
+      <ul>
+        <li><a href="https://thebibleliketotally.com/old-testament/genesis/">Genesis</a></li>
+        <li><a href="https://thebibleliketotally.com/old-testament/psalms/">Psalms</a></li>
+        <li><a href="https://thebibleliketotally.com/old-testament/proverbs/">Proverbs</a></li>
+        <li><a href="https://thebibleliketotally.com/old-testament/daniel/">Daniel</a></li>
+        <li><a href="https://thebibleliketotally.com/old-testament/esther/">Esther</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Listen</h4>
+      <ul>
+        <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank">YouTube Channel</a></li>
+        <li><a href="https://www.youtube.com/@TheBibleLikeTotally/playlists" target="_blank">All Playlists</a></li>
+        <li><a href="https://www.tiktok.com/@thebible_liketotally" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about.html">About This Translation</a></li>
+        <li><a href="new-testament.html">New Testament</a></li>
+        <li><a href="https://thebibleliketotally.com/terms-of-use/">Terms of Use</a></li>
+        <li><a href="https://thebibleliketotally.com/totally-contact-us/">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 <strong>The Bible, Like Totally.</strong> All Rights Reserved. All original content is protected under U.S. copyright law.</p>
+    <div class="footer-links">
+      <a href="https://thebibleliketotally.com/terms-of-use/">Terms of Use</a>
+      <a href="https://thebibleliketotally.com/privacy-policy/">Privacy Policy</a>
+      <a href="https://thebibleliketotally.com/totally-contact-us/">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
