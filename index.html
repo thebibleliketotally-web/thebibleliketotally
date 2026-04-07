@@ -380,13 +380,29 @@
       <span class="brand-tagline">A totally chill take on timeless truth</span>
     </div>
   </a>
-  <ul class="nav-links">
+    <ul class="nav-links">
     <li><a href="old-testament.html">Old Testament</a></li>
     <li><a href="new-testament.html">New Testament</a></li>
+    <li><a href="all-books.html">All 66 Books</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank">Listen on YouTube</a></li>
     <li><a href="https://thebibleliketotally.com" class="nav-cta">Join Today →</a></li>
   </ul>
+  <!-- SEARCH -->
+  <div class="nav-search">
+    <input
+      type="text"
+      class="nav-search-input"
+      id="navSearch"
+      placeholder="Search books..."
+      onkeydown="handleNavSearch(event)"
+    >
+    <button class="nav-search-btn" onclick="toggleNavSearch()" aria-label="Search">🔍</button>
+  </div>
+  <!-- MOBILE MENU BUTTON -->
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
