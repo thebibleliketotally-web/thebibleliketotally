@@ -571,3 +571,112 @@ footer {
   .signup-form { flex-direction: column; }
   .footer-bottom { flex-direction: column; gap: 16px; }
 }
+
+/* ============================================================
+   NAVIGATION UPDATE — Mobile Menu + Search
+   ============================================================ */
+
+/* MOBILE MENU BUTTON */
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.mobile-menu-btn span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* MOBILE MENU OVERLAY */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--navy);
+  z-index: 999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu ul {
+  list-style: none;
+  text-align: center;
+  width: 100%;
+  padding: 0 40px;
+}
+.mobile-menu ul li {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mobile-menu ul li a {
+  display: block;
+  padding: 20px 0;
+  color: var(--white);
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  transition: color 0.2s;
+}
+.mobile-menu ul li a:hover { color: var(--teal); }
+.mobile-menu ul li a.nav-cta {
+  background: var(--teal);
+  color: var(--white) !important;
+  border-radius: 50px;
+  padding: 14px 32px;
+  margin-top: 20px;
+  display: inline-block;
+  font-size: 16px;
+}
+
+/* NAV SEARCH */
+.nav-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.nav-search-input {
+  width: 0;
+  padding: 8px 0;
+  border: none;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: var(--navy);
+  outline: none;
+  transition: width 0.3s, border-color 0.3s, padding 0.3s;
+  overflow: hidden;
+}
+.nav-search-input.open {
+  width: 180px;
+  padding: 8px 12px;
+  border-bottom-color: var(--teal);
+}
+.nav-search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px 8px;
+  color: var(--navy);
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+.nav-search-btn:hover { color: var(--teal); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-search { display: none; }
+  .mobile-menu-btn { display: flex; }
+}
