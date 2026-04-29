@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use — The Bible, Like Totally</title>
+<meta name="description" content="Terms of Use for The Bible, Like Totally — governing your use of our website, content, and services.">
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .legal-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 52px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* STICKY TOC SIDEBAR */
+  .legal-toc {
+    position: sticky;
+    top: 100px;
+    background: var(--white);
+    border: 1.5px solid rgba(27,42,74,0.08);
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 20px rgba(27,42,74,0.06);
+  }
+  .legal-toc h3 {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .legal-toc ul { list-style: none; }
+  .legal-toc ul li { margin-bottom: 4px; }
+  .legal-toc ul li a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: block;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    line-height: 1.4;
+  }
+  .legal-toc ul li a:hover {
+    background: var(--light-teal);
+    color: var(--teal);
+  }
+  .legal-toc .last-updated {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(27,42,74,0.08);
+    font-style: italic;
+  }
+
+  /* LEGAL CONTENT */
+  .legal-content {
+    background: var(--white);
+    border: 1.5px solid rgba(27,42,74,0.08);
+    border-radius: 24px;
+    padding: 52px 48px;
+    box-shadow: 0 4px 30px rgba(27,42,74,0.06);
+  }
+  .legal-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 8px;
+    line-height: 1.15;
+  }
+  .legal-content .legal-date {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    display: block;
+  }
+  .legal-intro {
+    background: var(--light-teal);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    font-size: 15px;
+    color: var(--text-body);
+    line-height: 1.7;
+  }
+  .legal-section {
+    margin-bottom: 44px;
+    padding-bottom: 44px;
+    border-bottom: 1px solid rgba(27,42,74,0.06);
+  }
+  .legal-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .legal-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .legal-section h2 .section-num {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 3px 9px;
+    border-radius: 50px;
+    flex-shrink: 0;
+  }
+  .legal-section h3 {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--navy);
+    margin: 20px 0 8px;
+  }
+  .legal-section p {
+    font-size: 15px;
+    color: var(--text-body);
+    line-height: 1.85;
+    margin-bottom: 14px;
+  }
+  .legal-section ul {
+    list-style: none;
+    margin: 0 0 14px;
+    padding: 0;
+  }
+  .legal-section ul li {
+    font-size: 15px;
+    color: var(--text-body);
+    line-height: 1.75;
+    padding: 6px 0 6px 24px;
+    position: relative;
+    border-bottom: 1px solid rgba(27,42,74,0.04);
+  }
+  .legal-section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-weight: 800;
+  }
+  .legal-section ul li:last-child { border-bottom: none; }
+  .legal-highlight {
+    background: var(--light-purple);
+    border: 1.5px solid rgba(91,45,142,0.15);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .legal-highlight p {
+    font-size: 14px;
+    color: var(--purple);
+    font-weight: 700;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+  .legal-warning {
+    background: var(--light-amber);
+    border: 1.5px solid rgba(201,146,26,0.2);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 16px 0;
+  }
+  .legal-warning p {
+    font-size: 14px;
+    color: var(--amber);
+    font-weight: 700;
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
+  .legal-contact-box {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin-top: 32px;
+    text-align: center;
+  }
+  .legal-contact-box p {
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .legal-contact-box a {
+    color: var(--teal);
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  @media (max-width: 900px) {
+    .legal-layout { grid-template-columns: 1fr; }
+    .legal-toc { position: static; }
+    .legal-content { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="announcement-bar">
+  🌊 The entire Bible — verse by verse — in a totally chill, relatable voice.
+  <a href="index.html">Back to Home →</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="The Bible, Like Totally">
+    <div class="nav-logo-text">
+      <span class="brand-name">The Bible, Like Totally</span>
+      <span class="brand-tagline">A totally chill take on timeless truth</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="old-testament.html">Old Testament</a></li>
+    <li><a href="new-testament.html">New Testament</a></li>
+    <li><a href="all-books.html">All 66 Books</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank">Listen on YouTube</a></li>
+    <li><a href="https://thebibleliketotally.com" class="nav-cta">Join Today →</a></li>
+  </ul>
+  <div class="nav-search">
+    <input type="text" class="nav-search-input" id="navSearch" placeholder="Search books..." onkeydown="handleNavSearch(event)">
+    <button class="nav-search-btn" onclick="toggleNavSearch()" aria-label="Search">&#128269;</button>
+  </div>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="index.html" onclick="toggleMobileMenu()">Home</a></li>
+    <li><a href="old-testament.html" onclick="toggleMobileMenu()">Old Testament</a></li>
+    <li><a href="new-testament.html" onclick="toggleMobileMenu()">New Testament</a></li>
+    <li><a href="all-books.html" onclick="toggleMobileMenu()">All 66 Books</a></li>
+    <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
+    <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" onclick="toggleMobileMenu()">Listen on YouTube</a></li>
+    <li><a href="https://thebibleliketotally.com" class="nav-cta" onclick="toggleMobileMenu()">Join Today →</a></li>
+  </ul>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-label">Legal</span>
+    <h1>Terms of <em>Use</em></h1>
+    <p>The terms governing your use of The Bible, Like Totally website, content, and services.</p>
+  </div>
+</div>
+
+<section style="background: var(--off-white);">
+  <div class="legal-layout">
+
+    <!-- TOC SIDEBAR -->
+    <div class="legal-toc fade-in">
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#eligibility">1. Eligibility &amp; Access</a></li>
+        <li><a href="#account">2. Account Creation</a></li>
+        <li><a href="#subscriptions">3. Subscriptions &amp; Billing</a></li>
+        <li><a href="#refunds">4. Refunds &amp; Cancellations</a></li>
+        <li><a href="#payments">5. Payments</a></li>
+        <li><a href="#data">6. Data Collection</a></li>
+        <li><a href="#content">7. Content Ownership &amp; IP</a></li>
+        <li><a href="#dmca">8. DMCA Policy</a></li>
+        <li><a href="#enforcement">9. Enforcement</a></li>
+        <li><a href="#restrictions">10. User Restrictions</a></li>
+        <li><a href="#feedback">11. Feedback &amp; Suggestions</a></li>
+        <li><a href="#disclaimer">12. Disclaimer</a></li>
+        <li><a href="#liability">13. Limitation of Liability</a></li>
+        <li><a href="#governing">14. Governing Law</a></li>
+        <li><a href="#modifications">15. Modifications</a></li>
+        <li><a href="#contact-legal">16. Contact</a></li>
+      </ul>
+      <p class="last-updated">Last Updated: March 2026</p>
+    </div>
+
+    <!-- LEGAL CONTENT -->
+    <div class="legal-content fade-in">
+      <h1>Terms of Use</h1>
+      <span class="legal-date">Last Updated: March 2026</span>
+
+      <div class="legal-intro">
+        Welcome to The Bible, Like Totally. By accessing or using https://thebibleliketotally.com (the "Site"), you agree to be bound by these Terms of Use. If you do not agree, please do not use the Site.
+      </div>
+
+      <div class="legal-section" id="eligibility">
+        <h2><span class="section-num">1</span> Eligibility &amp; Access</h2>
+        <p>By using the Site, you confirm that you are legally permitted to do so in your jurisdiction. The Site is intended solely for personal, non-commercial use and may not be used for business, public, or commercial purposes without written permission.</p>
+        <p>You must be at least 18 years old to purchase a subscription or create an account. Users under age 13 may not create accounts or purchase subscriptions. Users age 13–17 must have permission from a parent or legal guardian.</p>
+      </div>
+
+      <div class="legal-section" id="account">
+        <h2><span class="section-num">2</span> Account Creation</h2>
+        <p>To access certain content, users must create an account. You agree to:</p>
+        <ul>
+          <li>Provide accurate and complete information including first and last name and email address</li>
+          <li>Maintain the confidentiality of your login credentials</li>
+          <li>Accept responsibility for all activity under your account</li>
+        </ul>
+        <p>Accounts are for individual use only and may not be shared.</p>
+      </div>
+
+      <div class="legal-section" id="subscriptions">
+        <h2><span class="section-num">3</span> Subscriptions &amp; Billing</h2>
+        <p>The Website offers monthly and yearly subscription plans. Subscriptions automatically renew according to the plan selected unless canceled by the user. Billing occurs at the beginning of each subscription period.</p>
+        <h3>Cancellation &amp; Renewal</h3>
+        <p>Users may cancel their subscription at any time by logging into their account. Monthly plans renew automatically each billing cycle unless canceled at least ten (10) days before the renewal date. Annual plans renew automatically unless canceled at least ten (10) days before the renewal date.</p>
+        <p>Cancellation prevents future charges but does not entitle the user to a refund for any current or prior billing period.</p>
+      </div>
+
+      <div class="legal-section" id="refunds">
+        <h2><span class="section-num">4</span> Refunds &amp; Cancellations</h2>
+        <p>We offer a 15-day refund period for annual subscriptions. You may request a full refund within 15 days of purchase. After 15 days, all purchases are final and non-refundable.</p>
+        <div class="legal-warning">
+          <p>⚠️ Attempting a chargeback after accessing paid content may result in account suspension and collection of fees.</p>
+        </div>
+      </div>
+
+      <div class="legal-section" id="payments">
+        <h2><span class="section-num">5</span> Payments</h2>
+        <p>The Website collects payment information necessary to process subscriptions. Payment details are handled securely through Stripe. We do not store full payment card numbers on our servers.</p>
+      </div>
+
+      <div class="legal-section" id="data">
+        <h2><span class="section-num">6</span> Data Collection</h2>
+        <p>We collect the following personal information:</p>
+        <ul>
+          <li>First and last name</li>
+          <li>Email address</li>
+          <li>Payment information via Stripe</li>
+        </ul>
+        <p>For more information, please review our <a href="privacy.html" style="color:var(--teal); font-weight:700;">Privacy Policy</a>.</p>
+      </div>
+
+      <div class="legal-section" id="content">
+        <h2><span class="section-num">7</span> Content Ownership &amp; Intellectual Property</h2>
+
+        <h3>7.1 Ownership of Original Creative Work</h3>
+        <p>All content on this Website — including but not limited to text, modern language paraphrases, creative translations, chapter summaries, chapter recaps, original phrasing, voice, tone, style, design, branding, logos, trademarks, audio recordings, and all other creative works — is the sole and exclusive intellectual property of The Bible, Like Totally.</p>
+        <p>While the underlying Scripture text is drawn from the King James Version of the Bible, which is in the public domain, the specific creative expression, word choices, phrasing, voice, structure, humor, and presentation style used throughout this Website are entirely original and are protected under United States copyright law and applicable international copyright treaties.</p>
+
+        <h3>7.2 What Is Protected</h3>
+        <ul>
+          <li>All modern language paraphrases of Scripture published on this Website</li>
+          <li>All chapter summaries and recaps</li>
+          <li>The brand name "The Bible, Like Totally" and tagline "A totally chill take on timeless truth"</li>
+          <li>All logos, visual branding, and graphic elements</li>
+          <li>All audio recordings published on this Website or associated YouTube channel</li>
+          <li>All written content appearing anywhere on this Website</li>
+        </ul>
+
+        <h3>7.3 Limited Personal Use License</h3>
+        <p>Users are granted a limited, non-exclusive, non-transferable, revocable license to access and read content on this Website for personal, private, non-commercial use only. This license does not include the right to:</p>
+        <ul>
+          <li>Copy, reproduce, or duplicate any content in whole or in part</li>
+          <li>Distribute, share, or republish any content through any medium</li>
+          <li>Use any content for church services, ministry presentations, public events, or group settings without written permission</li>
+          <li>Use any content for commercial purposes of any kind</li>
+          <li>Create derivative works based on any content</li>
+          <li>Train, fine-tune, or otherwise use any content to develop artificial intelligence models, machine learning systems, or any automated content generation tools</li>
+        </ul>
+
+        <h3>7.4 Permitted Sharing</h3>
+        <p>You may share individual verses or short passages of up to three (3) consecutive verses for personal, non-commercial purposes provided that clear attribution to The Bible, Like Totally and TheBibleLikeTotally.com is included.</p>
+
+        <div class="legal-highlight">
+          <p>🚫 This content may NOT be used to train, develop, or improve artificial intelligence systems or automated content generation tools of any kind — commercial or non-commercial.</p>
+        </div>
+
+        <h3>7.5 Trademarks</h3>
+        <p>The Bible, Like Totally, the associated logo, and all brand elements are trademarks of the Owner. You may not use our trademarks, brand name, or logo without prior written consent.</p>
+
+        <h3>7.6 Copyright Notice</h3>
+        <p>© 2025 The Bible, Like Totally. All Rights Reserved. Unauthorized reproduction, distribution, public display, or creation of derivative works from any content on this Website is strictly prohibited and constitutes copyright infringement subject to civil and criminal penalties under 17 U.S.C. § 501 et seq.</p>
+      </div>
+
+      <div class="legal-section" id="dmca">
+        <h2><span class="section-num">8</span> DMCA Copyright Infringement Policy</h2>
+        <p>If you believe that content on this Website infringes your copyright, please submit a written notice through our Contact page containing the following:</p>
+        <ul>
+          <li>A description of the copyrighted work you claim has been infringed</li>
+          <li>A description of where the allegedly infringing content appears on our Website</li>
+          <li>Your contact information including name, address, telephone number, and email</li>
+          <li>A statement that you have a good faith belief that the use is not authorized by the copyright owner</li>
+          <li>A statement under penalty of perjury that the information in your notice is accurate</li>
+          <li>Your physical or electronic signature</li>
+        </ul>
+        <p>We will respond to valid DMCA notices promptly. Repeat infringers will have their access terminated.</p>
+      </div>
+
+      <div class="legal-section" id="enforcement">
+        <h2><span class="section-num">9</span> Enforcement</h2>
+        <p>We actively monitor for unauthorized use of our content. If you reproduce, distribute, or use our content without authorization we reserve the right to:</p>
+        <ul>
+          <li>Issue a formal cease and desist notice</li>
+          <li>File a DMCA takedown request with any platform hosting infringing content</li>
+          <li>Pursue legal action for copyright infringement, damages, and attorneys' fees</li>
+          <li>Seek injunctive relief to stop unauthorized use</li>
+        </ul>
+      </div>
+
+      <div class="legal-section" id="restrictions">
+        <h2><span class="section-num">10</span> User Restrictions</h2>
+        <p>Users may not:</p>
+        <ul>
+          <li>Use the Website for business, ministry, resale, or public presentation purposes without written permission</li>
+          <li>Use any content to train artificial intelligence systems or automated tools of any kind</li>
+          <li>Attempt to reverse engineer, scrape, or systematically download Website content</li>
+          <li>Share login credentials or allow others to access your account</li>
+        </ul>
+      </div>
+
+      <div class="legal-section" id="feedback">
+        <h2><span class="section-num">11</span> Feedback &amp; Suggestions</h2>
+        <p>If you submit feedback, ideas, suggestions, or recommendations, you grant us the unrestricted right to use, modify, and incorporate such feedback. No compensation, credit, or attribution will be provided. Feedback becomes our property upon submission.</p>
+      </div>
+
+      <div class="legal-section" id="disclaimer">
+        <h2><span class="section-num">12</span> Disclaimer</h2>
+        <p>The Website and its content are provided "as is" and "as available." We make no guarantees regarding uninterrupted access, accuracy, or error-free operation.</p>
+        <div class="legal-highlight">
+          <p>📖 The content on this Website is a creative modern language paraphrase and is not intended as a substitute for reading Scripture in a recognized Bible translation. Users are encouraged to read traditional Scripture translations alongside this content.</p>
+        </div>
+      </div>
+
+      <div class="legal-section" id="liability">
+        <h2><span class="section-num">13</span> Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, we shall not be liable for any indirect, incidental, or consequential damages arising from your use of the Website or subscriptions.</p>
+      </div>
+
+      <div class="legal-section" id="governing">
+        <h2><span class="section-num">14</span> Governing Law</h2>
+        <p>These Terms shall be governed by and construed in accordance with the laws of the State of Texas, without regard to its conflict of law provisions. Any disputes arising under these Terms shall be resolved in the courts of Texas.</p>
+      </div>
+
+      <div class="legal-section" id="modifications">
+        <h2><span class="section-num">15</span> Modifications to Terms</h2>
+        <p>We reserve the right to update or modify these Terms at any time. Changes will be posted on the Website with an updated effective date. Continued use of the Site after changes are posted constitutes acceptance of the updated Terms.</p>
+      </div>
+
+      <div class="legal-section" id="contact-legal">
+        <h2><span class="section-num">16</span> Contact Information</h2>
+        <p>For questions, permissions, licensing inquiries, or copyright concerns, please contact us through our Contact page.</p>
+        <div class="legal-contact-box">
+          <p>Have a question about these Terms or need to report a copyright issue?</p>
+          <a href="contact.html" class="btn-primary" style="display:inline-flex;">Contact Us 🌊</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="signup-section fade-in">
+  <div class="signup-inner">
+    <span class="section-label">Stay in the Know</span>
+    <h2 class="section-title">Like, totally stay in the now.</h2>
+    <p class="section-subtitle">New Books, new audio, new content — dropped weekly.</p>
+    <div class="signup-form">
+      <input type="email" placeholder="Your email address...">
+      <button type="button">Subscribe 🌊</button>
+    </div>
+    <p class="signup-note">No spam. No weirdness. Just Scripture, totally delivered.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="The Bible, Like Totally">
+      <p>A creative, respectful re-imagining of Scripture — blending modern language with timeless truth.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/thebible.liketotally/" target="_blank" class="social-btn">📘</a>
+        <a href="https://www.instagram.com/thebible_liketotally/" target="_blank" class="social-btn">📸</a>
+        <a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" class="social-btn">▶</a>
+        <a href="https://www.tiktok.com/@thebible_liketotally" target="_blank" class="social-btn">🎵</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Scripture</h4>
+      <ul>
+        <li><a href="old-testament.html">Old Testament</a></li>
+        <li><a href="new-testament.html">New Testament</a></li>
+        <li><a href="all-books.html">All 66 Books</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Listen</h4>
+      <ul>
+        <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank">YouTube Channel</a></li>
+        <li><a href="https://www.youtube.com/@TheBibleLikeTotally/playlists" target="_blank">All Playlists</a></li>
+        <li><a href="https://www.tiktok.com/@thebible_liketotally" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about.html">About This Translation</a></li>
+        <li><a href="terms.html">Terms of Use</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 <strong>The Bible, Like Totally.</strong> All Rights Reserved. All original content is protected under U.S. copyright law.</p>
+    <div class="footer-links">
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function toggleNavSearch() {
+    const input = document.getElementById('navSearch');
+    input.classList.toggle('open');
+    if (input.classList.contains('open')) input.focus();
+  }
+  function handleNavSearch(event) {
+    if (event.key === 'Enter') {
+      const query = document.getElementById('navSearch').value.trim();
+      if (query) window.location.href = 'all-books.html?search=' + encodeURIComponent(query);
+    }
+  }
+</script>
+</body>
+</html>
