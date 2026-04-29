@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All 66 Books of the Bible — The Bible, Like Totally</title>
+<meta name="description" content="All 66 Books of the Bible in modern language — Old Testament and New Testament. Read free at The Bible, Like Totally.">
+<link rel="icon" type="image/png" href="logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@400;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* SEARCH BAR */
+  .search-container {
+    background: var(--off-white);
+    padding: 28px 60px;
+    border-bottom: 1px solid rgba(27,42,74,0.08);
+  }
+  .search-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    padding: 14px 50px 14px 20px;
+    border-radius: 50px;
+    border: 2px solid rgba(27,42,74,0.12);
+    background: var(--white);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    color: var(--navy);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-input:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(14,155,138,0.1);
+  }
+  .search-input::placeholder { color: var(--text-muted); }
+  .search-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+  .search-results-count {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  /* BOOKS PAGE */
+  .books-page { background: var(--white); }
+  .testament-section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 52px 0 28px;
+    padding-bottom: 14px;
+    border-bottom: 3px solid var(--navy);
+  }
+  .testament-section-header:first-of-type { margin-top: 0; }
+  .testament-section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--navy);
+  }
+  .testament-section-header.new h2 { color: var(--purple); }
+  .testament-section-header .t-count {
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--white);
+    background: var(--navy);
+    padding: 4px 12px;
+    border-radius: 50px;
+    margin-left: auto;
+  }
+  .testament-section-header.new .t-count { background: var(--purple); }
+
+  .category-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin: 32px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .category-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(27,42,74,0.1);
+  }
+
+  .all-books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .book-link {
+    background: var(--white);
+    border: 1.5px solid rgba(27,42,74,0.1);
+    border-radius: 12px;
+    padding: 16px 18px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+  .book-link::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: var(--teal);
+  }
+  .book-link:hover {
+    border-color: var(--teal);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(14,155,138,0.12);
+    background: var(--light-teal);
+  }
+  .book-link.purple-accent::before { background: var(--purple); }
+  .book-link.purple-accent:hover { border-color: var(--purple); box-shadow: 0 6px 20px rgba(91,45,142,0.12); background: var(--light-purple); }
+  .book-link.amber-accent::before { background: var(--amber); }
+  .book-link.amber-accent:hover { border-color: var(--amber); box-shadow: 0 6px 20px rgba(201,146,26,0.12); background: var(--light-amber); }
+  .book-num {
+    font-size: 10px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+    display: block;
+  }
+  .book-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  /* HIDDEN when search filters */
+  .book-link.hidden { display: none; }
+  .category-label.hidden { display: none; }
+  .testament-section-header.hidden { display: none; }
+
+  /* NO RESULTS */
+  .no-results {
+    text-align: center;
+    padding: 60px 20px;
+    display: none;
+  }
+  .no-results.visible { display: block; }
+  .no-results p {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .search-container { padding: 20px 20px; }
+    .all-books-grid { grid-template-columns: repeat(2, 1fr); }
+    .testament-section-header h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+  🌊 The entire Bible — verse by verse — in a totally chill, relatable voice.
+  <a href="index.html">Back to Home →</a>
+</div>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="logo.png" alt="The Bible, Like Totally">
+    <div class="nav-logo-text">
+      <span class="brand-name">The Bible, Like Totally</span>
+      <span class="brand-tagline">A totally chill take on timeless truth</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="old-testament.html">Old Testament</a></li>
+    <li><a href="new-testament.html">New Testament</a></li>
+    <li><a href="all-books.html" class="active">All 66 Books</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank">Listen on YouTube</a></li>
+    <li><a href="https://thebibleliketotally.com" class="nav-cta">Join Today →</a></li>
+  </ul>
+  <!-- MOBILE MENU BUTTON -->
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="old-testament.html" onclick="toggleMobileMenu()">Old Testament</a></li>
+    <li><a href="new-testament.html" onclick="toggleMobileMenu()">New Testament</a></li>
+    <li><a href="all-books.html" onclick="toggleMobileMenu()">All 66 Books</a></li>
+    <li><a href="about.html" onclick="toggleMobileMenu()">About</a></li>
+    <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" onclick="toggleMobileMenu()">Listen on YouTube</a></li>
+    <li><a href="https://thebibleliketotally.com" class="nav-cta" onclick="toggleMobileMenu()">Join Today →</a></li>
+  </ul>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-label">Complete Library</span>
+    <h1>All <em>66 Books</em> of the Bible</h1>
+    <p>Every Book of the Bible — Old Testament and New Testament — in a totally chill, relatable voice. Search by name or browse by category.</p>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-container">
+  <div class="search-wrapper">
+    <input
+      type="text"
+      class="search-input"
+      id="bookSearch"
+      placeholder="Search for a Book — try Genesis, Psalms, John..."
+      oninput="searchBooks(this.value)"
+      autocomplete="off"
+    >
+    <span class="search-icon">🔍</span>
+  </div>
+  <p class="search-results-count" id="resultsCount">Showing all 66 Books</p>
+</div>
+
+<!-- BOOKS -->
+<section class="books-page fade-in">
+
+  <div id="noResults" class="no-results">
+    <p>No Books found for that search. 🌊</p>
+    <a href="#" onclick="clearSearch()" class="btn-primary" style="display:inline-flex;">Clear Search</a>
+  </div>
+
+  <!-- OLD TESTAMENT -->
+  <div class="testament-section-header" id="otHeader">
+    <h2>Old Testament</h2>
+    <span class="t-count">39 Books</span>
+  </div>
+
+  <div class="category-label" id="cat-law">⚖️ The Law</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/genesis/" class="book-link" data-name="genesis">
+      <span class="book-num">Book 1</span>
+      <div class="book-title">Genesis</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/exodus/" class="book-link" data-name="exodus">
+      <span class="book-num">Book 2</span>
+      <div class="book-title">Exodus</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/leviticus/" class="book-link" data-name="leviticus">
+      <span class="book-num">Book 3</span>
+      <div class="book-title">Leviticus</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/numbers/" class="book-link" data-name="numbers">
+      <span class="book-num">Book 4</span>
+      <div class="book-title">Numbers</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/deuteronomy/" class="book-link" data-name="deuteronomy">
+      <span class="book-num">Book 5</span>
+      <div class="book-title">Deuteronomy</div>
+    </a>
+  </div>
+
+  <div class="category-label" id="cat-history">🏛️ History Books</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/joshua/" class="book-link purple-accent" data-name="joshua">
+      <span class="book-num">Book 6</span>
+      <div class="book-title">Joshua</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/judges/" class="book-link purple-accent" data-name="judges">
+      <span class="book-num">Book 7</span>
+      <div class="book-title">Judges</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ruth/" class="book-link purple-accent" data-name="ruth">
+      <span class="book-num">Book 8</span>
+      <div class="book-title">Ruth</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/i-samuel/" class="book-link purple-accent" data-name="1 samuel samuel">
+      <span class="book-num">Book 9</span>
+      <div class="book-title">1 Samuel</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ii-samuel/" class="book-link purple-accent" data-name="2 samuel samuel">
+      <span class="book-num">Book 10</span>
+      <div class="book-title">2 Samuel</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/i-kings/" class="book-link purple-accent" data-name="1 kings kings">
+      <span class="book-num">Book 11</span>
+      <div class="book-title">1 Kings</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ii-kings/" class="book-link purple-accent" data-name="2 kings kings">
+      <span class="book-num">Book 12</span>
+      <div class="book-title">2 Kings</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/i-chronicles/" class="book-link purple-accent" data-name="1 chronicles chronicles">
+      <span class="book-num">Book 13</span>
+      <div class="book-title">1 Chronicles</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ii-chronicles/" class="book-link purple-accent" data-name="2 chronicles chronicles">
+      <span class="book-num">Book 14</span>
+      <div class="book-title">2 Chronicles</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ezra/" class="book-link purple-accent" data-name="ezra">
+      <span class="book-num">Book 15</span>
+      <div class="book-title">Ezra</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/nehemiah/" class="book-link purple-accent" data-name="nehemiah">
+      <span class="book-num">Book 16</span>
+      <div class="book-title">Nehemiah</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/esther/" class="book-link purple-accent" data-name="esther">
+      <span class="book-num">Book 17</span>
+      <div class="book-title">Esther</div>
+    </a>
+  </div>
+
+  <div class="category-label" id="cat-wisdom">📜 Wisdom &amp; Poetry</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/job/" class="book-link amber-accent" data-name="job">
+      <span class="book-num">Book 18</span>
+      <div class="book-title">Job</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/psalms/" class="book-link amber-accent" data-name="psalms psalm">
+      <span class="book-num">Book 19</span>
+      <div class="book-title">Psalms</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/proverbs/" class="book-link amber-accent" data-name="proverbs">
+      <span class="book-num">Book 20</span>
+      <div class="book-title">Proverbs</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ecclesiastes/" class="book-link amber-accent" data-name="ecclesiastes">
+      <span class="book-num">Book 21</span>
+      <div class="book-title">Ecclesiastes</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/song-of-solomon/" class="book-link amber-accent" data-name="song of solomon song of songs">
+      <span class="book-num">Book 22</span>
+      <div class="book-title">Song of Solomon</div>
+    </a>
+  </div>
+
+  <div class="category-label" id="cat-major">🔥 Major Prophets</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/isaiah/" class="book-link" data-name="isaiah">
+      <span class="book-num">Book 23</span>
+      <div class="book-title">Isaiah</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/jeremiah/" class="book-link" data-name="jeremiah">
+      <span class="book-num">Book 24</span>
+      <div class="book-title">Jeremiah</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/lamentations/" class="book-link" data-name="lamentations">
+      <span class="book-num">Book 25</span>
+      <div class="book-title">Lamentations</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/ezekiel/" class="book-link" data-name="ezekiel">
+      <span class="book-num">Book 26</span>
+      <div class="book-title">Ezekiel</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/daniel/" class="book-link" data-name="daniel">
+      <span class="book-num">Book 27</span>
+      <div class="book-title">Daniel</div>
+    </a>
+  </div>
+
+  <div class="category-label" id="cat-minor">🕊️ Minor Prophets</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/old-testament/hosea/" class="book-link purple-accent" data-name="hosea">
+      <span class="book-num">Book 28</span>
+      <div class="book-title">Hosea</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/joel/" class="book-link purple-accent" data-name="joel">
+      <span class="book-num">Book 29</span>
+      <div class="book-title">Joel</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/amos/" class="book-link purple-accent" data-name="amos">
+      <span class="book-num">Book 30</span>
+      <div class="book-title">Amos</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/obadiah/" class="book-link purple-accent" data-name="obadiah">
+      <span class="book-num">Book 31</span>
+      <div class="book-title">Obadiah</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/jonah/" class="book-link purple-accent" data-name="jonah">
+      <span class="book-num">Book 32</span>
+      <div class="book-title">Jonah</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/micah/" class="book-link purple-accent" data-name="micah">
+      <span class="book-num">Book 33</span>
+      <div class="book-title">Micah</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/nahum/" class="book-link purple-accent" data-name="nahum">
+      <span class="book-num">Book 34</span>
+      <div class="book-title">Nahum</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/habakkuk/" class="book-link purple-accent" data-name="habakkuk">
+      <span class="book-num">Book 35</span>
+      <div class="book-title">Habakkuk</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/zephaniah/" class="book-link purple-accent" data-name="zephaniah">
+      <span class="book-num">Book 36</span>
+      <div class="book-title">Zephaniah</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/haggai/" class="book-link purple-accent" data-name="haggai">
+      <span class="book-num">Book 37</span>
+      <div class="book-title">Haggai</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/zechariah/" class="book-link purple-accent" data-name="zechariah">
+      <span class="book-num">Book 38</span>
+      <div class="book-title">Zechariah</div>
+    </a>
+    <a href="https://thebibleliketotally.com/old-testament/malachi/" class="book-link purple-accent" data-name="malachi">
+      <span class="book-num">Book 39</span>
+      <div class="book-title">Malachi</div>
+    </a>
+  </div>
+
+  <!-- NEW TESTAMENT -->
+  <div class="testament-section-header new" id="ntHeader">
+    <h2>New Testament</h2>
+    <span class="t-count">27 Books</span>
+  </div>
+
+  <div class="category-label" id="cat-gospels">✨ The Gospels</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/new-testament/matthew/" class="book-link" data-name="matthew">
+      <span class="book-num">NT Book 1</span>
+      <div class="book-title">Matthew</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/mark/" class="book-link" data-name="mark">
+      <span class="book-num">NT Book 2</span>
+      <div class="book-title">Mark</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/luke/" class="book-link" data-name="luke">
+      <span class="book-num">NT Book 3</span>
+      <div class="book-title">Luke</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/john/" class="book-link" data-name="john">
+      <span class="book-num">NT Book 4</span>
+      <div class="book-title">John</div>
+    </a>
+  </div>
+
+  <div class="category-label" id="cat-acts">⚡ History</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/new-testament/acts/" class="book-link amber-accent" data-name="acts">
+      <span class="book-num">NT Book 5</span>
+      <div class="book-title">Acts</div>
+    </a>
+  </div>
+
+  <div class="category-label" id="cat-pauls">✉️ Paul's Letters</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/new-testament/romans/" class="book-link purple-accent" data-name="romans">
+      <span class="book-num">NT Book 6</span>
+      <div class="book-title">Romans</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-corinthians/" class="book-link purple-accent" data-name="1 corinthians corinthians">
+      <span class="book-num">NT Book 7</span>
+      <div class="book-title">1 Corinthians</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-corinthians/" class="book-link purple-accent" data-name="2 corinthians corinthians">
+      <span class="book-num">NT Book 8</span>
+      <div class="book-title">2 Corinthians</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/galatians/" class="book-link purple-accent" data-name="galatians">
+      <span class="book-num">NT Book 9</span>
+      <div class="book-title">Galatians</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ephesians/" class="book-link purple-accent" data-name="ephesians">
+      <span class="book-num">NT Book 10</span>
+      <div class="book-title">Ephesians</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/philippians/" class="book-link purple-accent" data-name="philippians">
+      <span class="book-num">NT Book 11</span>
+      <div class="book-title">Philippians</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/colossians/" class="book-link purple-accent" data-name="colossians">
+      <span class="book-num">NT Book 12</span>
+      <div class="book-title">Colossians</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-thessalonians/" class="book-link purple-accent" data-name="1 thessalonians thessalonians">
+      <span class="book-num">NT Book 13</span>
+      <div class="book-title">1 Thessalonians</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-thessalonians/" class="book-link purple-accent" data-name="2 thessalonians thessalonians">
+      <span class="book-num">NT Book 14</span>
+      <div class="book-title">2 Thessalonians</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-timothy/" class="book-link purple-accent" data-name="1 timothy timothy">
+      <span class="book-num">NT Book 15</span>
+      <div class="book-title">1 Timothy</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-timothy/" class="book-link purple-accent" data-name="2 timothy timothy">
+      <span class="book-num">NT Book 16</span>
+      <div class="book-title">2 Timothy</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/titus/" class="book-link purple-accent" data-name="titus">
+      <span class="book-num">NT Book 17</span>
+      <div class="book-title">Titus</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/philemon/" class="book-link purple-accent" data-name="philemon">
+      <span class="book-num">NT Book 18</span>
+      <div class="book-title">Philemon</div>
+    </a>
+  </div>
+
+  <div class="category-label" id="cat-general">📜 General Epistles</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/new-testament/hebrews/" class="book-link" data-name="hebrews">
+      <span class="book-num">NT Book 19</span>
+      <div class="book-title">Hebrews</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/james/" class="book-link" data-name="james">
+      <span class="book-num">NT Book 20</span>
+      <div class="book-title">James</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-peter/" class="book-link" data-name="1 peter peter">
+      <span class="book-num">NT Book 21</span>
+      <div class="book-title">1 Peter</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-peter/" class="book-link" data-name="2 peter peter">
+      <span class="book-num">NT Book 22</span>
+      <div class="book-title">2 Peter</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/i-john/" class="book-link" data-name="1 john john">
+      <span class="book-num">NT Book 23</span>
+      <div class="book-title">1 John</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/ii-john/" class="book-link" data-name="2 john john">
+      <span class="book-num">NT Book 24</span>
+      <div class="book-title">2 John</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/iii-john/" class="book-link" data-name="3 john john">
+      <span class="book-num">NT Book 25</span>
+      <div class="book-title">3 John</div>
+    </a>
+    <a href="https://thebibleliketotally.com/new-testament/jude/" class="book-link" data-name="jude">
+      <span class="book-num">NT Book 26</span>
+      <div class="book-title">Jude</div>
+    </a>
+  </div>
+
+  <div class="category-label" id="cat-prophecy">🌅 Prophecy</div>
+  <div class="all-books-grid">
+    <a href="https://thebibleliketotally.com/new-testament/revelation/" class="book-link amber-accent" data-name="revelation">
+      <span class="book-num">NT Book 27</span>
+      <div class="book-title">Revelation</div>
+    </a>
+  </div>
+
+</section>
+
+<!-- EMAIL SIGNUP -->
+<section class="signup-section fade-in">
+  <div class="signup-inner">
+    <span class="section-label">Stay in the Know</span>
+    <h2 class="section-title">Like, totally stay in the now.</h2>
+    <p class="section-subtitle">New Books, new audio, new content — dropped weekly.</p>
+    <div class="signup-form">
+      <input type="email" placeholder="Your email address...">
+      <button type="button">Subscribe 🌊</button>
+    </div>
+    <p class="signup-note">No spam. No weirdness. Just Scripture, totally delivered.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="logo.png" alt="The Bible, Like Totally">
+      <p>A creative, respectful re-imagining of Scripture — blending modern language with timeless truth.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/thebible.liketotally/" target="_blank" class="social-btn">📘</a>
+        <a href="https://www.instagram.com/thebible_liketotally/" target="_blank" class="social-btn">📸</a>
+        <a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" class="social-btn">▶</a>
+        <a href="https://www.tiktok.com/@thebible_liketotally" target="_blank" class="social-btn">🎵</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Scripture</h4>
+      <ul>
+        <li><a href="old-testament.html">Old Testament</a></li>
+        <li><a href="new-testament.html">New Testament</a></li>
+        <li><a href="all-books.html">All 66 Books</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Listen</h4>
+      <ul>
+        <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank">YouTube Channel</a></li>
+        <li><a href="https://www.youtube.com/@TheBibleLikeTotally/playlists" target="_blank">All Playlists</a></li>
+        <li><a href="https://www.tiktok.com/@thebible_liketotally" target="_blank">TikTok</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about.html">About This Translation</a></li>
+        <li><a href="https://thebibleliketotally.com/terms-of-use/">Terms of Use</a></li>
+        <li><a href="https://thebibleliketotally.com/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="https://thebibleliketotally.com/totally-contact-us/">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 <strong>The Bible, Like Totally.</strong> All Rights Reserved. All original content is protected under U.S. copyright law.</p>
+    <div class="footer-links">
+      <a href="https://thebibleliketotally.com/terms-of-use/">Terms of Use</a>
+      <a href="https://thebibleliketotally.com/privacy-policy/">Privacy Policy</a>
+      <a href="https://thebibleliketotally.com/totally-contact-us/">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // SEARCH FUNCTIONALITY
+  function searchBooks(query) {
+    const books = document.querySelectorAll('.book-link');
+    const q = query.toLowerCase().trim();
+    let visible = 0;
+
+    books.forEach(book => {
+      const name = book.getAttribute('data-name').toLowerCase();
+      const title = book.querySelector('.book-title').textContent.toLowerCase();
+      if (!q || name.includes(q) || title.includes(q)) {
+        book.classList.remove('hidden');
+        visible++;
+      } else {
+        book.classList.add('hidden');
+      }
+    });
+
+    // Update count
+    const countEl = document.getElementById('resultsCount');
+    if (!q) {
+      countEl.textContent = 'Showing all 66 Books';
+    } else {
+      countEl.textContent = visible === 0
+        ? 'No Books found'
+        : `Showing ${visible} Book${visible !== 1 ? 's' : ''}`;
+    }
+
+    // Show/hide no results
+    document.getElementById('noResults').classList.toggle('visible', visible === 0 && q !== '');
+  }
+
+  function clearSearch() {
+    document.getElementById('bookSearch').value = '';
+    searchBooks('');
+  }
+
+  // SCROLL ANIMATIONS
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // HANDLE URL SEARCH PARAMS
+  window.addEventListener("DOMContentLoaded", function() {
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("search");
+    if (query) {
+      const input = document.getElementById("bookSearch");
+      input.value = query;
+      searchBooks(query);
+    }
+  });
+
+  // MOBILE MENU
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
