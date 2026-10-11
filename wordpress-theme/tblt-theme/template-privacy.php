@@ -261,6 +261,9 @@ get_header();
         <div class="legal-highlight">
           <p>🔒 We do not sell your personal information to third parties under any circumstances.</p>
         </div>
+        <div class="legal-highlight">
+          <p>🤖 We do not use your personal information to train AI models.</p>
+        </div>
       </div>
 
       <div class="legal-section" id="sharing">
@@ -327,6 +330,7 @@ get_header();
           <li><strong>Payment Cookies</strong> — Stripe may place cookies necessary to process payments securely.</li>
         </ul>
         <p>You can change your cookie choices at any time using the cookie settings button on the Website, or through your browser settings.</p>
+        <p><strong>Do Not Track.</strong> We do not track you across other websites, and we do not currently respond to Do Not Track browser signals.</p>
       </div>
 
       <div class="legal-section" id="children">
