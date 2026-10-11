@@ -202,12 +202,12 @@ get_header();
         <li><a href="#changes">12. Changes to This Policy</a></li>
         <li><a href="#contact-privacy">13. Contact Us</a></li>
       </ul>
-      <p class="last-updated">Last Updated: March 2026</p>
+      <p class="last-updated">Last Updated: October 2026</p>
     </div>
 
     <div class="legal-content fade-in">
       <h1>Privacy Policy</h1>
-      <span class="legal-date">Last Updated: March 2026</span>
+      <span class="legal-date">Last Updated: October 2026</span>
 
       <div class="legal-intro" id="intro">
         The Bible, Like Totally is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you visit https://thebibleliketotally.com and any associated platforms including our YouTube channel and email communications. By using our Website you agree to the practices described in this Privacy Policy.
@@ -230,7 +230,7 @@ get_header();
         <p>When you visit our Website we may automatically collect technical information including IP address, browser type, operating system, pages visited, time spent on each page, referring URL, date and time of your visit, and device type. This information is collected through cookies and tracking technologies described in Section 5.</p>
 
         <h3>1.3 Information From Third Parties</h3>
-        <p>We may receive information from Stripe when you complete a payment, Google Analytics when you interact with our Website, and Kit (our email marketing platform) when you interact with our emails.</p>
+        <p>We may receive information from Stripe when you complete a payment, WordPress.com site statistics (Jetpack) when you interact with our Website, and Kit (our email marketing platform) when you interact with our emails.</p>
       </div>
 
       <div class="legal-section" id="use">
@@ -251,7 +251,7 @@ get_header();
         </ul>
         <h3>To Improve the Website</h3>
         <ul>
-          <li>Analyze how visitors use the Website through Google Analytics</li>
+          <li>Analyze how visitors use the Website through WordPress.com site statistics (Jetpack)</li>
           <li>Identify and fix technical issues</li>
           <li>Improve content, design, and user experience</li>
         </ul>
@@ -282,9 +282,21 @@ get_header();
         </div>
 
         <div class="provider-card">
-          <h4>📊 Google Analytics — Website Analytics</h4>
-          <p>Helps us understand Website traffic using anonymous usage data via cookies.</p>
-          <a href="https://policies.google.com/privacy" target="_blank">View Google's Privacy Policy →</a>
+          <h4>🌐 WordPress.com (Automattic) — Hosting &amp; Site Statistics</h4>
+          <p>Hosts our Website and provides site statistics and security through Jetpack, using anonymous usage data such as pages visited, referring site, and device type.</p>
+          <a href="https://automattic.com/privacy/" target="_blank">View Automattic's Privacy Policy →</a>
+        </div>
+
+        <div class="provider-card">
+          <h4>✉️ Formspree — Contact Form</h4>
+          <p>Delivers the messages you send through our Contact page, including your name, email address, and message, to our inbox.</p>
+          <a href="https://formspree.io/legal/privacy-policy/" target="_blank">View Formspree's Privacy Policy →</a>
+        </div>
+
+        <div class="provider-card">
+          <h4>🍪 CookieYes — Cookie Preferences</h4>
+          <p>Shows our cookie notice and records your cookie choices.</p>
+          <a href="https://www.cookieyes.com/privacy-policy/" target="_blank">View CookieYes's Privacy Policy →</a>
         </div>
 
         <p style="margin-top:20px;">We may also disclose your information if required by law, to protect our rights, or in the event of a business transfer. We will notify you before your information becomes subject to a different privacy policy.</p>
@@ -296,7 +308,7 @@ get_header();
           <li>Account information is retained for the duration of your account and a reasonable period afterward</li>
           <li>Payment records are retained as required by applicable tax and financial regulations</li>
           <li>Email subscriber information is retained until you unsubscribe</li>
-          <li>Analytics data is retained according to Google's standard retention settings</li>
+          <li>Analytics data is retained according to WordPress.com's standard retention settings</li>
         </ul>
         <p>We will delete or anonymize your personal information upon request as described in Section 7.</p>
       </div>
@@ -306,10 +318,11 @@ get_header();
         <p>Cookies are small text files placed on your device when you visit a website. We use the following types:</p>
         <ul>
           <li><strong>Essential Cookies</strong> — required for the Website to function properly including your login session and payment processing. Cannot be disabled.</li>
-          <li><strong>Analytics Cookies</strong> — Google Analytics uses these to collect anonymous usage data. You may opt out.</li>
+          <li><strong>Analytics Cookies</strong> — WordPress.com site statistics (Jetpack) use these to collect anonymous usage data. You may decline them in our cookie settings.</li>
+          <li><strong>Preference Cookies</strong> — CookieYes stores your cookie choices.</li>
           <li><strong>Payment Cookies</strong> — Stripe may place cookies necessary to process payments securely.</li>
         </ul>
-        <p>You may opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" style="color:var(--teal);font-weight:700;">Google Analytics Opt-out Browser Add-on</a>.</p>
+        <p>You can change your cookie choices at any time using the cookie settings button on the Website, or through your browser settings.</p>
       </div>
 
       <div class="legal-section" id="children">
