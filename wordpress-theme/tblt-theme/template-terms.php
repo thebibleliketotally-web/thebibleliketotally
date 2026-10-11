@@ -241,13 +241,13 @@ get_header();
         <li><a href="#modifications">15. Modifications</a></li>
         <li><a href="#contact-legal">16. Contact</a></li>
       </ul>
-      <p class="last-updated">Last Updated: March 2026</p>
+      <p class="last-updated">Last Updated: October 2026</p>
     </div>
 
     <!-- LEGAL CONTENT -->
     <div class="legal-content fade-in">
       <h1>Terms of Use</h1>
-      <span class="legal-date">Last Updated: March 2026</span>
+      <span class="legal-date">Last Updated: October 2026</span>
 
       <div class="legal-intro">
         Welcome to The Bible, Like Totally. By accessing or using https://thebibleliketotally.com (the "Site"), you agree to be bound by these Terms of Use. If you do not agree, please do not use the Site.
@@ -268,19 +268,20 @@ get_header();
           <li>Accept responsibility for all activity under your account</li>
         </ul>
         <p>Accounts are for individual use only and may not be shared.</p>
+        <p>The Book of Obadiah is available to read free, without an account, as a sample. The full text of all other Books is available only to members with an active paid plan.</p>
       </div>
 
       <div class="legal-section" id="subscriptions">
         <h2><span class="section-num">3</span> Subscriptions &amp; Billing</h2>
-        <p>The Website offers monthly and yearly subscription plans. Subscriptions automatically renew according to the plan selected unless canceled by the user. Billing occurs at the beginning of each subscription period.</p>
+        <p>The Website offers monthly, annual, and lifetime membership plans. Current plans and prices are shown on our Join page. Monthly and annual plans renew automatically according to the plan selected unless canceled by the member. Billing occurs at the beginning of each subscription period. The lifetime plan is a single one-time payment that provides access to members-only content for as long as the Website operates; it does not renew.</p>
         <h3>Cancellation &amp; Renewal</h3>
-        <p>Users may cancel their subscription at any time by logging into their account. Monthly plans renew automatically each billing cycle unless canceled at least ten (10) days before the renewal date. Annual plans renew automatically unless canceled at least ten (10) days before the renewal date.</p>
-        <p>Cancellation prevents future charges but does not entitle the user to a refund for any current or prior billing period.</p>
+        <p>Members may cancel a monthly or annual plan at any time from their account page. Cancelling stops future renewals, and you keep access until the end of the billing period you have already paid for.</p>
+        <p>Cancellation prevents future charges but does not entitle the user to a refund for any current or prior billing period, except as described in Section 4.</p>
       </div>
 
       <div class="legal-section" id="refunds">
         <h2><span class="section-num">4</span> Refunds &amp; Cancellations</h2>
-        <p>We offer a 15-day refund period for annual subscriptions. You may request a full refund within 15 days of purchase. After 15 days, all purchases are final and non-refundable.</p>
+        <p>We offer a 15-day refund period for annual plans. You may request a full refund within 15 days of purchase. After 15 days, all purchases are final and non-refundable. Monthly and lifetime plan purchases are final once paid, except where a refund is required by law.</p>
         <div class="legal-warning">
           <p>⚠️ Attempting a chargeback after accessing paid content may result in account suspension and collection of fees.</p>
         </div>
@@ -297,7 +298,9 @@ get_header();
         <ul>
           <li>First and last name</li>
           <li>Email address</li>
-          <li>Payment information via Stripe</li>
+          <li>Payment information via Stripe (we do not store full card numbers)</li>
+          <li>Membership and plan status</li>
+          <li>Messages and details you send through our contact form or email signup</li>
         </ul>
         <p>For more information, please review our <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>" style="color:var(--teal); font-weight:700;">Privacy Policy</a>.</p>
       </div>
@@ -341,7 +344,7 @@ get_header();
         <p>The Bible, Like Totally, the associated logo, and all brand elements are trademarks of the Owner. You may not use our trademarks, brand name, or logo without prior written consent.</p>
 
         <h3>7.6 Copyright Notice</h3>
-        <p>© 2025 The Bible, Like Totally. All Rights Reserved. Unauthorized reproduction, distribution, public display, or creation of derivative works from any content on this Website is strictly prohibited and constitutes copyright infringement subject to civil and criminal penalties under 17 U.S.C. § 501 et seq.</p>
+        <p>© 2026 The Bible, Like Totally. All Rights Reserved. Unauthorized reproduction, distribution, public display, or creation of derivative works from any content on this Website is strictly prohibited and constitutes copyright infringement subject to civil and criminal penalties under 17 U.S.C. § 501 et seq.</p>
       </div>
 
       <div class="legal-section" id="dmca">
