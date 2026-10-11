@@ -1,0 +1,471 @@
+<?php
+/*
+ * Template Name: Contact (TBLT)
+ */
+if (!defined('ABSPATH')) exit;
+tblt_meta('Totally Contact Us — The Bible, Like Totally', 'Get in touch with The Bible, Like Totally — questions, feedback, licensing inquiries, or just saying hey. We read every message.');
+add_action('wp_head', function () { ?>
+<style>
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* FORM STYLES */
+  .contact-form-card {
+    background: var(--white);
+    border: 1.5px solid rgba(27,42,74,0.08);
+    border-radius: 24px;
+    padding: 44px 40px;
+    box-shadow: 0 4px 30px rgba(27,42,74,0.06);
+  }
+  .contact-form-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .contact-form-card .form-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .form-group label {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+  .form-group label .required {
+    color: var(--teal);
+    margin-left: 2px;
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 13px 16px;
+    border: 2px solid rgba(27,42,74,0.12);
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    color: var(--navy);
+    background: var(--off-white);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    width: 100%;
+  }
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--teal);
+    background: var(--white);
+    box-shadow: 0 0 0 3px rgba(14,155,138,0.1);
+  }
+  .form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+  }
+  .form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236B7A8D' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .form-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--teal);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 8px 28px rgba(14,155,138,0.3);
+    margin-top: 8px;
+  }
+  .form-submit:hover {
+    background: #0BC4AE;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(14,155,138,0.4);
+  }
+  .form-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 14px;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* SUCCESS MESSAGE */
+  .success-message {
+    display: none;
+    background: var(--light-teal);
+    border: 2px solid rgba(14,155,138,0.25);
+    border-radius: 16px;
+    padding: 28px 32px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  .success-message.visible { display: block; }
+  .success-message .success-icon { font-size: 40px; margin-bottom: 12px; display: block; }
+  .success-message h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .success-message p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+  /* SIDEBAR */
+  .contact-sidebar { position: sticky; top: 100px; }
+  .contact-info-card {
+    border-radius: 20px;
+    padding: 32px 28px;
+    margin-bottom: 20px;
+  }
+  .contact-info-card.navy { background: var(--navy); }
+  .contact-info-card.teal { background: var(--light-teal); }
+  .contact-info-card.purple { background: var(--light-purple); }
+  .contact-info-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 16px;
+  }
+  .contact-info-card.navy h3 { color: var(--white); }
+  .contact-info-card.teal h3 { color: var(--navy); }
+  .contact-info-card.purple h3 { color: var(--navy); }
+  .contact-info-card p {
+    font-size: 14px;
+    line-height: 1.75;
+    margin-bottom: 0;
+  }
+  .contact-info-card.navy p { color: rgba(255,255,255,0.72); }
+  .contact-info-card.teal p,
+  .contact-info-card.purple p { color: var(--text-muted); }
+
+  .contact-reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .contact-reason {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+  }
+  .contact-reason .reason-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .contact-reason .reason-text { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.5; }
+  .contact-reason .reason-text strong { color: var(--white); display: block; font-size: 13px; margin-bottom: 2px; }
+
+  .social-connect {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .social-connect-btn {
+    flex: 1;
+    padding: 10px 8px;
+    background: var(--white);
+    border: 1.5px solid rgba(27,42,74,0.1);
+    border-radius: 10px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--navy);
+    transition: all 0.2s;
+    font-family: 'Nunito', sans-serif;
+  }
+  .social-connect-btn:hover {
+    background: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+  }
+  .social-connect-btn .sc-icon { font-size: 18px; display: block; margin-bottom: 4px; }
+
+  .faq-item {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(27,42,74,0.08);
+  }
+  .faq-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .faq-item h4 {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .faq-item p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .contact-sidebar { position: static; }
+    .form-row { grid-template-columns: 1fr; }
+    .contact-form-card { padding: 28px 24px; }
+  }
+</style>
+<?php }, 30);
+get_header();
+?>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="section-label">Get In Touch</span>
+    <h1>Totally <em>Contact Us</em></h1>
+    <span class="tagline">We read every single message. For real.</span>
+    <p>Questions, feedback, licensing inquiries, partnership ideas, or just want to say hey — we are here for all of it.</p>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<section style="background: var(--off-white);">
+  <div class="contact-grid">
+
+    <!-- LEFT: FORM -->
+    <div class="fade-in">
+      <div class="contact-form-card">
+        <h2>Send Us a Message</h2>
+        <p class="form-subtitle">Fill out the form below and we will get back to you within 48 hours. No spam. No weirdness. Just a real response from a real person.</p>
+
+        <form id="contactForm" action="https://formspree.io/f/mdabnlbo" method="POST" onsubmit="handleSubmit(event)">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name <span class="required">*</span></label>
+              <input type="text" name="firstName" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+              <label>Last Name <span class="required">*</span></label>
+              <input type="text" name="lastName" placeholder="Your last name" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Email Address <span class="required">*</span></label>
+            <input type="email" name="email" placeholder="your@email.com" required>
+          </div>
+
+          <div class="form-group">
+            <label>What can we help you with?</label>
+            <select name="subject">
+              <option value="" disabled selected>Select a topic...</option>
+              <option value="general">General Question</option>
+              <option value="feedback">Feedback or Suggestion</option>
+              <option value="licensing">Licensing or Permissions</option>
+              <option value="partnership">Partnership or Collaboration</option>
+              <option value="technical">Website or Technical Issue</option>
+              <option value="prayer">Prayer Request</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Your Message <span class="required">*</span></label>
+            <textarea name="message" placeholder="Tell us what's on your heart..." required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Send Message 🌊</button>
+          <p class="form-note">By submitting this form you agree to our <a href="<?php echo esc_url(home_url('/terms-of-use/')); ?>" style="color:var(--teal);">Terms of Use</a> and <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>" style="color:var(--teal);">Privacy Policy</a>.</p>
+
+        </form>
+
+        <div class="success-message" id="successMessage">
+          <span class="success-icon">🌊</span>
+          <h3>Message received!</h3>
+          <p>Thanks for reaching out. We read every message and will get back to you within 48 hours. In the meantime — grab a verse and enjoy the Word.</p>
+          <br>
+          <a href="<?php echo esc_url(home_url('/')); ?>" class="btn-primary" style="display:inline-flex; margin-top:8px;">🌊 Back to Home</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: SIDEBAR -->
+    <div class="contact-sidebar fade-in">
+
+      <!-- WHY REACH OUT -->
+      <div class="contact-info-card navy">
+        <h3>Why People Reach Out</h3>
+        <div class="contact-reasons">
+          <div class="contact-reason">
+            <span class="reason-icon">📖</span>
+            <div class="reason-text">
+              <strong>Content Questions</strong>
+              Questions about a specific verse, chapter, or Book translation.
+            </div>
+          </div>
+          <div class="contact-reason">
+            <span class="reason-icon">⚖️</span>
+            <div class="reason-text">
+              <strong>Licensing &amp; Permissions</strong>
+              Want to use our content in your church, podcast, or publication.
+            </div>
+          </div>
+          <div class="contact-reason">
+            <span class="reason-icon">🤝</span>
+            <div class="reason-text">
+              <strong>Partnerships</strong>
+              Collaboration ideas, sponsorships, or creative projects.
+            </div>
+          </div>
+          <div class="contact-reason">
+            <span class="reason-icon">💛</span>
+            <div class="reason-text">
+              <strong>Just Saying Hey</strong>
+              Sharing how the content impacted you. We love hearing this.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONNECT ON SOCIALS -->
+      <div class="contact-info-card teal">
+        <h3>Connect on Social</h3>
+        <p style="margin-bottom:0">Sometimes the fastest way to reach us is through social media. We are active on all four platforms.</p>
+        <div class="social-connect">
+          <a href="https://www.facebook.com/thebible.liketotally/" target="_blank" class="social-connect-btn">
+            <span class="sc-icon">📘</span>Facebook
+          </a>
+          <a href="https://www.instagram.com/thebible_liketotally/" target="_blank" class="social-connect-btn">
+            <span class="sc-icon">📸</span>Instagram
+          </a>
+          <a href="https://www.tiktok.com/@thebible_liketotally" target="_blank" class="social-connect-btn">
+            <span class="sc-icon">🎵</span>TikTok
+          </a>
+          <a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" class="social-connect-btn yt-solid">
+            <span class="sc-icon">▶</span>YouTube
+          </a>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="contact-info-card purple">
+        <h3>Quick Answers</h3>
+        <div class="faq-item">
+          <h4>Is it free?</h4>
+          <p>Browsing the site and our <a class="yt-pill" href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" rel="noopener">YouTube</a> channel is free, and Obadiah is free to read as a sample. Reading the full text of all 66 Books on the website takes a membership: $6.60/month, $66/year, or $166 lifetime.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I use this in my church or ministry?</h4>
+          <p>Please reach out first — we are happy to discuss licensing and permissions for ministry use.</p>
+        </div>
+        <div class="faq-item">
+          <h4>How long until I hear back?</h4>
+          <p>We aim to respond to all messages within 48 hours. Usually faster.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Is this a replacement for the Bible?</h4>
+          <p>No — it is a modern paraphrase and commentary. We always encourage reading a traditional translation alongside this one.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VERSE HIGHLIGHT -->
+<section class="verse-section fade-in">
+  <div class="inner">
+    <blockquote>
+      "God totally loved the world so much that he gave his one and only Son, so that anyone who, like, believes in him will not perish but will have everlasting forever life, bro."
+    </blockquote>
+    <span class="cite">John 3:16</span>
+    <a href="<?php echo esc_url(home_url('/old-testament/obadiah/')); ?>" class="btn-white">📖 Read Obadiah Free</a>
+  </div>
+</section>
+
+<!-- EMAIL SIGNUP -->
+<section class="signup-section fade-in">
+  <div class="signup-inner">
+    <span class="section-label">Stay in the Know</span>
+    <h2 class="section-title">Like, totally stay in the know.</h2>
+    <p class="section-subtitle">Join our email list.</p>
+    <div class="signup-form">
+      <?php
+      $tblt_kit = do_shortcode('[convertkit form="10032240"]');
+      if (trim($tblt_kit) !== '') { echo $tblt_kit; } else { ?>
+      <a href="https://the-bible-like-totally.kit.com/66062f99f6" class="btn-primary" style="border-radius:50px; padding:15px 28px; font-size:14px; font-weight:800; text-decoration:none; display:inline-flex; align-items:center; gap:8px; background:var(--teal); color:var(--white); box-shadow:0 8px 28px rgba(14,155,138,0.3); font-family:'Nunito',sans-serif;">Subscribe 🌊</a>
+      <?php } ?>
+    </div>
+    <p class="signup-note">No spam. No weirdness. Just Scripture, totally delivered.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<script>
+// FORM SUBMISSION via Formspree
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('successMessage');
+    const btn = form.querySelector('.form-submit');
+
+    // Show loading state
+    btn.textContent = 'Sending... 🌊';
+    btn.disabled = true;
+
+    try {
+      const response = await fetch('https://formspree.io/f/mdabnlbo', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // Success — hide form show confirmation
+        form.style.display = 'none';
+        success.classList.add('visible');
+      } else {
+        // Error — reset button
+        btn.textContent = 'Send Message 🌊';
+        btn.disabled = false;
+        alert('Something went totally sideways. Please try again or email us directly at hello@thebibleliketotally.com');
+      }
+    } catch (error) {
+      btn.textContent = 'Send Message 🌊';
+      btn.disabled = false;
+      alert('Something went totally sideways. Please try again or email us directly at hello@thebibleliketotally.com');
+    }
+  }
+
+</script>
+<?php get_footer(); ?>
