@@ -239,7 +239,7 @@ get_header();
 
       <div class="sidebar-card amber">
         <h3>Also on <a class="yt-pill" href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" rel="noopener">YouTube</a> 🎧</h3>
-        <p>Every Book of the Bible available as audio. Perfect for commutes, workouts, or just chilling at home.</p>
+        <p>Audio of the Books is on our YouTube channel, with more added as they're released. Perfect for commutes, workouts, or just chilling at home.</p>
         <a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" class="btn-primary" style="font-size:13px; padding: 10px 22px; background: #FF0000; box-shadow: none;">▶ Visit our Channel</a>
       </div>
 
