@@ -250,7 +250,7 @@ get_header();
       <span class="legal-date">Last Updated: October 2026</span>
 
       <div class="legal-intro">
-        Welcome to The Bible, Like Totally. By accessing or using https://thebibleliketotally.com (the "Site"), you agree to be bound by these Terms of Use. If you do not agree, please do not use the Site.
+        Welcome to The Bible, Like Totally, operated by K2B Worldwide, LLC, based in Dallas, Texas. By accessing or using https://thebibleliketotally.com (the "Site"), you agree to be bound by these Terms of Use. If you do not agree, please do not use the Site.
       </div>
 
       <div class="legal-section" id="eligibility">
@@ -413,7 +413,7 @@ get_header();
 
       <div class="legal-section" id="contact-legal">
         <h2><span class="section-num">16</span> Contact Information</h2>
-        <p>For questions, permissions, licensing inquiries, or copyright concerns, please contact us through our Contact page.</p>
+        <p>For questions, permissions, licensing inquiries, or copyright concerns, please contact us through our Contact page or by email at <a href="mailto:hello@thebibleliketotally.com" style="color:var(--teal);font-weight:700;">hello@thebibleliketotally.com</a>. The Site is operated by K2B Worldwide, LLC, Dallas, Texas.</p>
         <div class="legal-contact-box">
           <p>Have a question about these Terms or need to report a copyright issue?</p>
           <a href="<?php echo esc_url(home_url('/totally-contact-us/')); ?>" class="btn-primary" style="display:inline-flex;">Contact Us 🌊</a>

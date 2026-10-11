@@ -211,6 +211,7 @@ get_header();
 
       <div class="legal-intro" id="intro">
         The Bible, Like Totally is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you visit https://thebibleliketotally.com and any associated platforms including our YouTube channel and email communications. By using our Website you agree to the practices described in this Privacy Policy.
+        <p style="margin-top:14px;">The Bible, Like Totally is operated by <strong>K2B Worldwide, LLC</strong>, based in Dallas, Texas (“we,” “us,” or “our”). You can reach us at <a href="mailto:hello@thebibleliketotally.com" style="color:var(--teal);font-weight:700;">hello@thebibleliketotally.com</a>.</p>
       </div>
 
       <div class="legal-section" id="collection">
@@ -231,6 +232,8 @@ get_header();
 
         <h3>1.3 Information From Third Parties</h3>
         <p>We may receive information from Stripe when you complete a payment, WordPress.com site statistics (Jetpack) when you interact with our Website, and Kit (our email marketing platform) when you interact with our emails.</p>
+        <h3>1.4 Sensitive Information</h3>
+        <p>We do not ask you for information about your religious beliefs, health, or other sensitive characteristics. Because our content is religious, the fact that you use the Website could suggest your beliefs. We use your account and usage information only to run your account and the Website as described in this policy, and we never sell it.</p>
       </div>
 
       <div class="legal-section" id="use">
@@ -305,7 +308,8 @@ get_header();
       <div class="legal-section" id="retention">
         <h2><span class="section-num">4</span> Data Retention</h2>
         <ul>
-          <li>Account information is retained for the duration of your account and a reasonable period afterward</li>
+          <li>Account information is kept while your account is active. When you ask us to delete your account, we will delete or anonymize it within 30 days, except for records we must keep for legal, tax, security, or fraud-prevention reasons</li>
+          <li>Messages sent through our contact form are kept only as long as needed to respond and for reasonable record-keeping</li>
           <li>Payment records are retained as required by applicable tax and financial regulations</li>
           <li>Email subscriber information is retained until you unsubscribe</li>
           <li>Analytics data is retained according to WordPress.com's standard retention settings</li>
@@ -328,6 +332,7 @@ get_header();
       <div class="legal-section" id="children">
         <h2><span class="section-num">6</span> Children's Privacy</h2>
         <p>Our Website is not directed to children under the age of 13 and we do not knowingly collect personal information from children under 13. Users between the ages of 13 and 17 must have parental consent to create an account.</p>
+        <p>The age at which a person can consent to the processing of their data varies by country. Where local law sets a higher age than 13, we follow it.</p>
         <p>If we become aware that we have collected personal information from a child under 13 without parental consent we will take steps to delete that information promptly. Please contact us immediately if you believe this has occurred.</p>
       </div>
 
@@ -393,6 +398,7 @@ get_header();
           <li>Access controls limiting who can access personal information</li>
         </ul>
         <p>However no method of transmission over the Internet is 100% secure. If you believe your information has been compromised please contact us immediately.</p>
+        <p><strong>Data breach.</strong> If we learn of a security breach affecting your personal information, we will notify affected users by email without unreasonable delay, and as otherwise required by applicable law.</p>
       </div>
 
       <div class="legal-section" id="third-party">
@@ -409,6 +415,7 @@ get_header();
       <div class="legal-section" id="contact-privacy">
         <h2><span class="section-num">13</span> Contact Us</h2>
         <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices please contact us. We will respond to all privacy-related inquiries within 30 days.</p>
+        <p><strong>K2B Worldwide, LLC</strong><br>Dallas, Texas<br>Email: <a href="mailto:hello@thebibleliketotally.com" style="color:var(--teal);font-weight:700;">hello@thebibleliketotally.com</a></p>
         <div class="legal-contact-box">
           <p>Questions about your privacy or data? We are here to help.</p>
           <a href="<?php echo esc_url(home_url('/totally-contact-us/')); ?>" class="btn-primary" style="display:inline-flex;">Contact Us 🌊</a>
