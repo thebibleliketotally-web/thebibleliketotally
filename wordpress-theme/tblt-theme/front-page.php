@@ -397,7 +397,7 @@ get_header();
 <div class="trust-bar">
   <div class="trust-item"><span class="icon">📖</span> Rooted in the KJV</div>
   <div class="trust-item"><span class="icon">🌊</span> Modern Language</div>
-  <div class="trust-item"><span class="icon">🎧</span> Full Audio on <a class="yt-pill" href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" rel="noopener">YouTube</a></div>
+  <div class="trust-item"><span class="icon">🎧</span> Audio on <a class="yt-pill" href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" rel="noopener">YouTube</a></div>
   <div class="trust-item"><span class="icon">✝️</span> Respectful &amp; Sincere</div>
   <div class="trust-item"><span class="icon">💛</span> Free Sample: Obadiah</div>
 </div>
@@ -523,7 +523,7 @@ get_header();
 <section class="youtube-section fade-in">
   <span class="section-label">Now on <a class="yt-pill" href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" rel="noopener">YouTube</a></span>
   <h2 class="section-title" style="margin-bottom:16px;">Prefer to <em>listen?</em></h2>
-  <p class="section-subtitle" style="margin:0 auto 40px;">Every Book of the Bible — available as audio on our <a class="yt-pill" href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" rel="noopener">YouTube</a> channel. Perfect for commutes, workouts, or just chilling at home.</p>
+  <p class="section-subtitle" style="margin:0 auto 40px;">Listen to the Books of the Bible on our <a class="yt-pill" href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" rel="noopener">YouTube</a> channel, with more added as they're released. Perfect for commutes, workouts, or just chilling at home.</p>
   <a href="https://www.youtube.com/@TheBibleLikeTotally" class="youtube-btn" target="_blank">▶ Listen on YouTube</a>
   <div class="books-grid">
     <a href="<?php echo esc_url(home_url('/')); ?>old-testament/genesis/" class="book-pill teal">Genesis</a>
