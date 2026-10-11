@@ -55,20 +55,30 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
   })();
-  function toggleMobileMenu() {
-    document.getElementById('mobileMenu').classList.toggle('open');
+  function tbltCloseDDs(except) {
+    document.querySelectorAll('.hdr-dd.open').forEach(function(d){
+      if (d.id === except) return;
+      d.classList.remove('open');
+      var b = d.querySelector('button'); if (b) b.setAttribute('aria-expanded', 'false');
+    });
   }
-  function toggleNavSearch() {
-    var input = document.getElementById('navSearch');
-    input.classList.toggle('open');
-    if (input.classList.contains('open')) input.focus();
+  function tbltToggleDD(id) {
+    var d = document.getElementById(id); if (!d) return;
+    tbltCloseDDs(id);
+    var open = d.classList.toggle('open');
+    d.querySelector('button').setAttribute('aria-expanded', open ? 'true' : 'false');
   }
-  function handleNavSearch(event) {
-    if (event.key === 'Enter') {
-      var query = document.getElementById('navSearch').value.trim();
-      if (query) window.location.href = window.TBLT.allBooks + '?search=' + encodeURIComponent(query);
-    }
+  function tbltSearch(form) {
+    var q = form.q.value.trim();
+    if (q) window.location.href = window.TBLT.allBooks + '?search=' + encodeURIComponent(q);
+    return false;
   }
+  document.addEventListener('click', function(e){
+    if (!e.target.closest('.hdr-dd')) tbltCloseDDs();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') tbltCloseDDs();
+  });
 </script>
 <?php wp_footer(); ?>
 </body>
