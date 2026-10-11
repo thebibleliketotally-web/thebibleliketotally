@@ -19,47 +19,84 @@
   🌊 The entire Bible — in a totally chill, relatable voice.
 </div>
 
-<nav>
-  <a href="<?php echo esc_url(home_url('/')); ?>" class="nav-logo">
-    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/logo.png" alt="The Bible, Like Totally">
-    <div class="nav-logo-text">
-      <span class="brand-name">The Bible, Like Totally</span>
-      <span class="brand-tagline">A totally chill take on timeless truth</span>
-    </div>
-  </a>
-      <ul class="nav-links">
-    <li><a href="<?php echo esc_url(home_url('/old-testament/')); ?>"<?php echo tblt_active('old-testament'); ?>>Old Testament</a></li>
-    <li><a href="<?php echo esc_url(home_url('/new-testament/')); ?>"<?php echo tblt_active('new-testament'); ?>>New Testament</a></li>
-    <li><a href="<?php echo esc_url(home_url('/all-books/')); ?>"<?php echo tblt_active('all-books'); ?>>All 66 Books</a></li>
-    <li><a href="<?php echo esc_url(home_url('/about/')); ?>"<?php echo tblt_active('about'); ?>>About</a></li>
-    <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" class="yt-nav">Listen on <span class="yt-pill">YouTube</span></a></li>
-    <li><a href="<?php echo esc_url(home_url('/join/')); ?>" class="nav-cta">Join Today →</a></li>
-  </ul>
-  <!-- SEARCH -->
-  <div class="nav-search">
-    <input
-      type="text"
-      class="nav-search-input"
-      id="navSearch"
-      placeholder="Search books..."
-      onkeydown="handleNavSearch(event)"
-    >
-    <button class="nav-search-btn" onclick="toggleNavSearch()" aria-label="Search">&#128269;</button>
-  </div>
-  <!-- MOBILE MENU BUTTON -->
-  <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
+<?php
+$tblt_logged_in = is_user_logged_in();
+$tblt_yt        = 'https://www.youtube.com/@TheBibleLikeTotally';
+?>
+<header class="site-header" id="siteHeader">
 
-<div class="mobile-menu" id="mobileMenu">
-  <ul>
-    <li><a href="<?php echo esc_url(home_url('/')); ?>" onclick="toggleMobileMenu()">Home</a></li>
-    <li><a href="<?php echo esc_url(home_url('/old-testament/')); ?>" onclick="toggleMobileMenu()">Old Testament</a></li>
-    <li><a href="<?php echo esc_url(home_url('/new-testament/')); ?>" onclick="toggleMobileMenu()">New Testament</a></li>
-    <li><a href="<?php echo esc_url(home_url('/all-books/')); ?>" onclick="toggleMobileMenu()">All 66 Books</a></li>
-    <li><a href="<?php echo esc_url(home_url('/about/')); ?>" onclick="toggleMobileMenu()">About</a></li>
-    <li><a href="https://www.youtube.com/@TheBibleLikeTotally" target="_blank" class="yt-nav" onclick="toggleMobileMenu()">Listen on <span class="yt-pill">YouTube</span></a></li>
-    <li><a href="<?php echo esc_url(home_url('/join/')); ?>" class="nav-cta" onclick="toggleMobileMenu()">Join Today →</a></li>
-  </ul>
-</div>
+  <!-- TOP ROW: brand left, account + menu right -->
+  <div class="hdr-top">
+    <a href="<?php echo esc_url(home_url('/')); ?>" class="nav-logo">
+      <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/logo.png" alt="The Bible, Like Totally">
+      <div class="nav-logo-text">
+        <span class="brand-name">The Bible, Like Totally</span>
+        <span class="brand-tagline">A totally chill take on timeless truth</span>
+      </div>
+    </a>
+
+    <div class="hdr-actions">
+
+      <!-- LOGIN / ACCOUNT DROPDOWN -->
+      <div class="hdr-dd" id="ddAccount">
+        <button type="button" class="hdr-icon-btn" aria-label="Account menu" aria-haspopup="true" aria-expanded="false" aria-controls="ddAccountPanel" onclick="tbltToggleDD('ddAccount')">
+          <svg class="avatar-ico" viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false">
+            <circle cx="20" cy="20" r="18.2" fill="#fff" stroke="#1B2A4A" stroke-width="2.4"/>
+            <circle cx="20" cy="20" r="14.4" fill="#C9921A"/>
+            <circle cx="20" cy="15.6" r="5.6" fill="#5B2D8E"/>
+            <path d="M8.9 30.6c1.2-5.2 5.5-8.2 11.1-8.2s9.9 3 11.1 8.2A14.4 14.4 0 0 1 20 34.4a14.4 14.4 0 0 1-11.1-3.8z" fill="#5B2D8E"/>
+          </svg>
+        </button>
+        <div class="hdr-panel hdr-panel-account" id="ddAccountPanel" role="menu">
+          <?php if ($tblt_logged_in) : ?>
+            <a role="menuitem" href="<?php echo esc_url(home_url('/account-2/')); ?>">Dashboard</a>
+            <a role="menuitem" href="<?php echo esc_url(home_url('/my-profile-2/')); ?>">Profile</a>
+            <a role="menuitem" href="<?php echo esc_url(home_url('/account-2/list-subscriptions/')); ?>">My Account</a>
+            <a role="menuitem" href="<?php echo esc_url(home_url('/account-2/edit-profile/')); ?>">Settings</a>
+            <a role="menuitem" class="hdr-panel-strong" href="<?php echo esc_url(wp_logout_url(home_url('/'))); ?>">Logout</a>
+          <?php else : ?>
+            <a role="menuitem" class="hdr-panel-strong" href="<?php echo esc_url(home_url('/log-in-2/')); ?>">Login</a>
+            <a role="menuitem" href="<?php echo esc_url(home_url('/sign-up-2/')); ?>">Create Account</a>
+          <?php endif; ?>
+        </div>
+      </div>
+
+      <!-- HAMBURGER DROPDOWN (all screen sizes) -->
+      <div class="hdr-dd" id="ddMenu">
+        <button type="button" class="hdr-icon-btn hdr-burger" aria-label="Main menu" aria-haspopup="true" aria-expanded="false" aria-controls="ddMenuPanel" onclick="tbltToggleDD('ddMenu')">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="hdr-panel hdr-panel-menu" id="ddMenuPanel" role="menu">
+          <a role="menuitem" href="<?php echo esc_url(home_url('/old-testament/')); ?>">Old Testament</a>
+          <a role="menuitem" href="<?php echo esc_url(home_url('/new-testament/')); ?>">New Testament</a>
+          <a role="menuitem" href="<?php echo esc_url(home_url('/all-books/')); ?>">All 66 Books</a>
+          <a role="menuitem" href="<?php echo esc_url(home_url('/about/')); ?>">About</a>
+          <a role="menuitem" class="yt-nav" href="<?php echo esc_url($tblt_yt); ?>" target="_blank" rel="noopener">Listen on <span class="yt-pill">YouTube</span></a>
+          <a role="menuitem" href="<?php echo esc_url(home_url('/totally-contact-us/')); ?>">Contact Us</a>
+          <a role="menuitem" class="nav-cta" href="<?php echo esc_url(home_url('/join/')); ?>">Join Today →</a>
+          <form class="hdr-search hdr-search-panel" role="search" onsubmit="return tbltSearch(this)">
+            <input type="text" name="q" placeholder="Search books..." aria-label="Search books" autocomplete="off">
+            <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SECOND ROW: main navigation + search (desktop) -->
+  <nav class="hdr-nav" aria-label="Main">
+    <ul class="nav-links">
+      <li><a href="<?php echo esc_url(home_url('/old-testament/')); ?>"<?php echo tblt_active('old-testament'); ?>>Old Testament</a></li>
+      <li><a href="<?php echo esc_url(home_url('/new-testament/')); ?>"<?php echo tblt_active('new-testament'); ?>>New Testament</a></li>
+      <li><a href="<?php echo esc_url(home_url('/all-books/')); ?>"<?php echo tblt_active('all-books'); ?>>All 66 Books</a></li>
+      <li><a href="<?php echo esc_url(home_url('/about/')); ?>"<?php echo tblt_active('about'); ?>>About</a></li>
+      <li><a href="<?php echo esc_url($tblt_yt); ?>" target="_blank" rel="noopener" class="yt-nav">Listen on <span class="yt-pill">YouTube</span></a></li>
+    </ul>
+    <form class="hdr-search" role="search" onsubmit="return tbltSearch(this)">
+      <input type="text" name="q" placeholder="Search books..." aria-label="Search books" autocomplete="off">
+      <button type="submit" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    </form>
+  </nav>
+
+</header>
