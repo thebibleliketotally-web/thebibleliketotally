@@ -23,6 +23,82 @@ add_action('wp_head', function () {
     echo '<meta property="og:site_name" content="The Bible, Like Totally">' . "\n";
 }, 5);
 
+/* Canonical book order (Old Testament 39, New Testament 27) — used by the header dropdown menus */
+function tblt_books() {
+    return array(
+      'old-testament' => array(
+        ['Genesis', 'genesis'],
+        ['Exodus', 'exodus'],
+        ['Leviticus', 'leviticus'],
+        ['Numbers', 'numbers'],
+        ['Deuteronomy', 'deuteronomy'],
+        ['Joshua', 'joshua'],
+        ['Judges', 'judges'],
+        ['Ruth', 'ruth'],
+        ['1 Samuel', 'i-samuel'],
+        ['2 Samuel', 'ii-samuel'],
+        ['1 Kings', 'i-kings'],
+        ['2 Kings', 'ii-kings'],
+        ['1 Chronicles', 'i-chronicles'],
+        ['2 Chronicles', 'ii-chronicles'],
+        ['Ezra', 'ezra'],
+        ['Nehemiah', 'nehemiah'],
+        ['Esther', 'esther'],
+        ['Job', 'job'],
+        ['Psalms', 'psalms'],
+        ['Proverbs', 'proverbs'],
+        ['Ecclesiastes', 'ecclesiastes'],
+        ['Song of Solomon', 'song-of-solomon'],
+        ['Isaiah', 'isaiah'],
+        ['Jeremiah', 'jeremiah'],
+        ['Lamentations', 'lamentations'],
+        ['Ezekiel', 'ezekiel'],
+        ['Daniel', 'daniel'],
+        ['Hosea', 'hosea'],
+        ['Joel', 'joel'],
+        ['Amos', 'amos'],
+        ['Obadiah', 'obadiah'],
+        ['Jonah', 'jonah'],
+        ['Micah', 'micah'],
+        ['Nahum', 'nahum'],
+        ['Habakkuk', 'habakkuk'],
+        ['Zephaniah', 'zephaniah'],
+        ['Haggai', 'haggai'],
+        ['Zechariah', 'zechariah'],
+        ['Malachi', 'malachi']
+      ),
+      'new-testament' => array(
+        ['Matthew', 'matthew'],
+        ['Mark', 'mark'],
+        ['Luke', 'luke'],
+        ['John', 'john'],
+        ['Acts', 'acts'],
+        ['Romans', 'romans'],
+        ['1 Corinthians', 'i-corinthians'],
+        ['2 Corinthians', 'ii-corinthians'],
+        ['Galatians', 'galatians'],
+        ['Ephesians', 'ephesians'],
+        ['Philippians', 'philippians'],
+        ['Colossians', 'colossians'],
+        ['1 Thessalonians', 'i-thessalonians'],
+        ['2 Thessalonians', 'ii-thessalonians'],
+        ['1 Timothy', 'i-timothy'],
+        ['2 Timothy', 'ii-timothy'],
+        ['Titus', 'titus'],
+        ['Philemon', 'philemon'],
+        ['Hebrews', 'hebrews'],
+        ['James', 'james'],
+        ['1 Peter', 'i-peter'],
+        ['2 Peter', 'ii-peter'],
+        ['1 John', 'i-john'],
+        ['2 John', 'ii-john'],
+        ['3 John', 'iii-john'],
+        ['Jude', 'jude'],
+        ['Revelation', 'revelation']
+      ),
+    );
+}
+
 /* Highlight the current page in the main nav */
 function tblt_active($slug) {
     $path = trim(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH), '/');

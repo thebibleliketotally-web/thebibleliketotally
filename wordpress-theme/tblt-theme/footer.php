@@ -56,7 +56,7 @@
     document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
   })();
   function tbltCloseDDs(except) {
-    document.querySelectorAll('.hdr-dd.open').forEach(function(d){
+    document.querySelectorAll('.hdr-dd.open, .nav-dd.open').forEach(function(d){
       if (d.id === except) return;
       d.classList.remove('open');
       var b = d.querySelector('button'); if (b) b.setAttribute('aria-expanded', 'false');
@@ -68,6 +68,7 @@
     var open = d.classList.toggle('open');
     d.querySelector('button').setAttribute('aria-expanded', open ? 'true' : 'false');
   }
+  var tbltToggleNavDD = tbltToggleDD;
   function tbltSearch(form) {
     var q = form.q.value.trim();
     if (q) window.location.href = window.TBLT.allBooks + '?search=' + encodeURIComponent(q);
@@ -78,7 +79,7 @@
     a.removeAttribute('href'); a.setAttribute('tabindex', '-1'); a.removeAttribute('target');
   });
   document.addEventListener('click', function(e){
-    if (!e.target.closest('.hdr-dd')) tbltCloseDDs();
+    if (!e.target.closest('.hdr-dd, .nav-dd')) tbltCloseDDs();
   });
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape') tbltCloseDDs();

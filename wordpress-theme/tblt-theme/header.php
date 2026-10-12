@@ -93,8 +93,27 @@ $tblt_yt        = 'https://www.youtube.com/@TheBibleLikeTotally';
   <!-- SECOND ROW: main navigation + search (desktop) -->
   <nav class="hdr-nav" aria-label="Main">
     <ul class="nav-links">
-      <li><a href="<?php echo esc_url(home_url('/old-testament/')); ?>"<?php echo tblt_active('old-testament'); ?>>Old Testament</a></li>
-      <li><a href="<?php echo esc_url(home_url('/new-testament/')); ?>"<?php echo tblt_active('new-testament'); ?>>New Testament</a></li>
+      <?php
+      $tblt_books  = tblt_books();
+      $tblt_groups = array('old-testament' => 'Old Testament', 'new-testament' => 'New Testament');
+      foreach ($tblt_groups as $tblt_slug => $tblt_label) :
+        $tblt_list = $tblt_books[$tblt_slug];
+      ?>
+      <li class="nav-dd" id="dd-<?php echo esc_attr($tblt_slug); ?>">
+        <a href="<?php echo esc_url(home_url('/' . $tblt_slug . '/')); ?>"<?php echo tblt_active($tblt_slug); ?>><?php echo esc_html($tblt_label); ?></a>
+        <button type="button" class="nav-dd-caret" aria-label="<?php echo esc_attr($tblt_label); ?> books" aria-haspopup="true" aria-expanded="false" onclick="tbltToggleNavDD('dd-<?php echo esc_attr($tblt_slug); ?>')">
+          <svg viewBox="0 0 12 8" width="11" height="8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dd-panel" role="menu">
+          <a class="nav-dd-all" role="menuitem" href="<?php echo esc_url(home_url('/' . $tblt_slug . '/')); ?>">All <?php echo count($tblt_list); ?> <?php echo esc_html($tblt_label); ?> Books →</a>
+          <div class="nav-dd-cols">
+            <?php foreach ($tblt_list as $tblt_b) : ?>
+            <a role="menuitem" href="<?php echo esc_url(home_url('/' . $tblt_slug . '/' . $tblt_b[1] . '/')); ?>"><?php echo esc_html($tblt_b[0]); ?></a>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </li>
+      <?php endforeach; ?>
       <li><a href="<?php echo esc_url(home_url('/all-books/')); ?>"<?php echo tblt_active('all-books'); ?>>All 66 Books</a></li>
       <li><a href="<?php echo esc_url(home_url('/about/')); ?>"<?php echo tblt_active('about'); ?>>About</a></li>
       <li><a href="<?php echo esc_url($tblt_yt); ?>" target="_blank" rel="noopener" class="yt-nav">Listen on <span class="yt-pill">YouTube</span></a></li>
