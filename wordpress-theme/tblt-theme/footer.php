@@ -48,7 +48,7 @@
 </footer>
 
 <script>
-  window.TBLT = { allBooks: "<?php echo esc_url(home_url('/all-books/')); ?>" };
+  window.TBLT = { allBooks: "<?php echo esc_url(home_url('/all-books/')); ?>", logo: "<?php echo esc_url(get_template_directory_uri() . '/assets/logo.png'); ?>" };
   (function(){
     var obs = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -79,6 +79,11 @@
     if (q) window.location.href = window.TBLT.allBooks + '?search=' + encodeURIComponent(q);
     return false;
   }
+  /* My Account sidebar: always show the brand logo (members can't upload photos, so no generated/default avatars) */
+  document.querySelectorAll('.profilepress-myaccount-avatar img').forEach(function(img){
+    img.removeAttribute('srcset'); img.removeAttribute('data-del');
+    img.src = window.TBLT.logo; img.alt = 'The Bible, Like Totally';
+  });
   /* My Account sidebar avatar/logo: not a link (also removes it from keyboard tab order) */
   document.querySelectorAll('.profilepress-myaccount-avatar a').forEach(function(a){
     a.removeAttribute('href'); a.setAttribute('tabindex', '-1'); a.removeAttribute('target');
