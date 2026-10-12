@@ -289,7 +289,7 @@ get_header();
 
       <div class="legal-section" id="payments">
         <h2><span class="section-num">5</span> Payments</h2>
-        <p>The Website collects payment information necessary to process subscriptions. Payment details are handled securely through Stripe. We do not store full payment card numbers on our servers.</p>
+        <p>The Website collects payment information necessary to process subscriptions. You can pay by credit or debit card (including Apple Pay and Google Pay) through Stripe, or through PayPal. Payment details are handled securely by Stripe and PayPal. We do not store full payment card numbers or your PayPal login details on our servers. If you pay through PayPal, you may also manage the payment arrangement from within your PayPal account.</p>
       </div>
 
       <div class="legal-section" id="data">
@@ -298,7 +298,7 @@ get_header();
         <ul>
           <li>First and last name</li>
           <li>Email address</li>
-          <li>Payment information via Stripe (we do not store full card numbers)</li>
+          <li>Payment information via Stripe or PayPal (we do not store full card numbers)</li>
           <li>Membership and plan status</li>
           <li>Messages and details you send through our contact form or email signup</li>
         </ul>

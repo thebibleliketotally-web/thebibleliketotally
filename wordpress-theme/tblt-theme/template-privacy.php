@@ -222,7 +222,7 @@ get_header();
         <ul>
           <li>First and last name</li>
           <li>Email address</li>
-          <li>Payment information — processed securely through Stripe. We do not store full payment card numbers.</li>
+          <li>Payment information — processed securely by our payment providers, Stripe and PayPal. We do not store full payment card numbers or your PayPal login details.</li>
           <li>Membership and subscription status</li>
           <li>Any other information you choose to provide</li>
         </ul>
@@ -231,7 +231,7 @@ get_header();
         <p>When you visit our Website we may automatically collect technical information including IP address, browser type, operating system, pages visited, time spent on each page, referring URL, date and time of your visit, and device type. This information is collected through cookies and tracking technologies described in Section 5.</p>
 
         <h3>1.3 Information From Third Parties</h3>
-        <p>We may receive information from Stripe when you complete a payment, WordPress.com site statistics (Jetpack) when you interact with our Website, and Kit (our email marketing platform) when you interact with our emails.</p>
+        <p>We may receive information from Stripe or PayPal when you complete a payment (such as confirmation that a payment succeeded and your subscription status), WordPress.com site statistics (Jetpack) when you interact with our Website, and Kit (our email marketing platform) when you interact with our emails.</p>
         <h3>1.4 Sensitive Information</h3>
         <p>We do not ask you for information about your religious beliefs, health, or other sensitive characteristics. Because our content is religious, the fact that you use the Website could suggest your beliefs. We use your account and usage information only to run your account and the Website as described in this policy, and we never sell it.</p>
       </div>
@@ -241,7 +241,7 @@ get_header();
         <h3>To Provide and Manage the Service</h3>
         <ul>
           <li>Create and manage your account through ProfilePress</li>
-          <li>Process subscription payments through Stripe</li>
+          <li>Process subscription payments through Stripe and PayPal</li>
           <li>Deliver access to paid and free content</li>
           <li>Respond to your questions and requests</li>
           <li>Send transactional emails such as receipts and account notifications</li>
@@ -272,8 +272,14 @@ get_header();
 
         <div class="provider-card">
           <h4>💳 Stripe — Payment Processing</h4>
-          <p>Processes all payment transactions. We do not store your full payment card information.</p>
+          <p>Processes credit and debit card payments, including Apple Pay and Google Pay. We do not store your full payment card information.</p>
           <a href="https://stripe.com/privacy" target="_blank">View Stripe's Privacy Policy →</a>
+        </div>
+
+        <div class="provider-card">
+          <h4>💳 PayPal — Payment Processing</h4>
+          <p>Processes payments made with PayPal. We do not receive or store your PayPal login details or full payment card information.</p>
+          <a href="https://www.paypal.com/us/legalhub/paypal/privacy-full" target="_blank">View PayPal's Privacy Statement →</a>
         </div>
 
         <div class="provider-card">
@@ -327,7 +333,7 @@ get_header();
           <li><strong>Essential Cookies</strong> — required for the Website to function properly including your login session and payment processing. Cannot be disabled.</li>
           <li><strong>Analytics Cookies</strong> — WordPress.com site statistics (Jetpack) use these to collect anonymous usage data. You may decline them in our cookie settings.</li>
           <li><strong>Preference Cookies</strong> — CookieYes stores your cookie choices.</li>
-          <li><strong>Payment Cookies</strong> — Stripe may place cookies necessary to process payments securely.</li>
+          <li><strong>Payment Cookies</strong> — Stripe and PayPal may place cookies necessary to process payments securely.</li>
         </ul>
         <p>You can change your cookie choices at any time using the cookie settings button on the Website, or through your browser settings.</p>
         <p><strong>Do Not Track.</strong> We do not track you across other websites, and we do not currently respond to Do Not Track browser signals.</p>
@@ -397,7 +403,7 @@ get_header();
         <p>We implement appropriate technical and organizational measures to protect your personal information including:</p>
         <ul>
           <li>Secure HTTPS encryption on all pages</li>
-          <li>Secure payment processing through Stripe — we never store full payment card numbers</li>
+          <li>Secure payment processing through Stripe and PayPal — we never store full payment card numbers</li>
           <li>Membership and account data secured through ProfilePress</li>
           <li>Access controls limiting who can access personal information</li>
         </ul>

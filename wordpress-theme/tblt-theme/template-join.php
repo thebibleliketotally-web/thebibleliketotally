@@ -499,7 +499,7 @@ get_header();
     </div>
     <div class="faq-item">
       <h4>Is my payment secure?</h4>
-      <p>Yes — all payments are processed securely through Stripe. We never store your card information on our servers.</p>
+      <p>Yes — you can pay by card, Apple Pay, Google Pay or PayPal, and all payments are processed securely by Stripe and PayPal. We never store your card information on our servers.</p>
     </div>
     <div class="faq-item">
       <h4>What translation is this based on?</h4>
