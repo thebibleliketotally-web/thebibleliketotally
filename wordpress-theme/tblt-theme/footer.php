@@ -73,6 +73,10 @@
     if (q) window.location.href = window.TBLT.allBooks + '?search=' + encodeURIComponent(q);
     return false;
   }
+  /* My Account sidebar avatar/logo: not a link (also removes it from keyboard tab order) */
+  document.querySelectorAll('.profilepress-myaccount-avatar a').forEach(function(a){
+    a.removeAttribute('href'); a.setAttribute('tabindex', '-1'); a.removeAttribute('target');
+  });
   document.addEventListener('click', function(e){
     if (!e.target.closest('.hdr-dd')) tbltCloseDDs();
   });
