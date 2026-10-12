@@ -3,7 +3,7 @@ Theme Name: The Bible, Like Totally
 Theme URI: https://thebibleliketotally.com
 Author: The Bible, Like Totally
 Description: Custom theme that matches the GitHub-designed site (navy / teal / amber, Playfair Display + Nunito). Works with ProfilePress membership pages.
-Version: 1.0.23
+Version: 1.0.24
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: tblt
@@ -940,3 +940,21 @@ body input[type=checkbox].pp-form-field.login-remember{
 #dd-old-testament .nav-dd-cols{column-count:4}
 .nav-links .nav-dd-panel a{padding:6px 12px}
 .nav-dd-panel{max-height:calc(100vh - 175px)}
+
+/* ── Hamburger menu: Old / New Testament expand into book lists ── */
+.hdr-panel-menu { max-height: calc(100vh - 110px); overflow-y: auto; }
+.hdr-acc-row { display: flex; align-items: center; }
+.hdr-acc-row > a { flex: 1; }
+.hdr-acc-btn {
+  background: none; border: 0; cursor: pointer; color: var(--navy);
+  width: 48px; height: 42px; display: flex; align-items: center; justify-content: center;
+  transition: color .2s;
+}
+.hdr-acc-btn:hover, .hdr-acc.open .hdr-acc-btn { color: var(--teal); }
+.hdr-acc-btn svg { transition: transform .2s; }
+.hdr-acc.open .hdr-acc-btn svg { transform: rotate(180deg); }
+.hdr-acc-list { display: none; background: var(--off-white); padding: 6px 12px 10px; column-count: 2; column-gap: 4px; }
+.hdr-acc.open .hdr-acc-list { display: block; }
+.hdr-panel .hdr-acc-list a { padding: 7px 10px; font-size: 14px; border-radius: 8px; break-inside: avoid; }
+.hdr-panel .hdr-acc-list a:hover { background: var(--white); }
+.hdr-panel-menu { width: 300px; }

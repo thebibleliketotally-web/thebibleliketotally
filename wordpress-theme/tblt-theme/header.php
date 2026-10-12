@@ -73,8 +73,24 @@ $tblt_yt        = 'https://www.youtube.com/@TheBibleLikeTotally';
           <span></span><span></span><span></span>
         </button>
         <div class="hdr-panel hdr-panel-menu" id="ddMenuPanel" role="menu">
-          <a role="menuitem" href="<?php echo esc_url(home_url('/old-testament/')); ?>">Old Testament</a>
-          <a role="menuitem" href="<?php echo esc_url(home_url('/new-testament/')); ?>">New Testament</a>
+          <?php
+          $tblt_menu_books  = tblt_books();
+          $tblt_menu_groups = array('old-testament' => 'Old Testament', 'new-testament' => 'New Testament');
+          foreach ($tblt_menu_groups as $tblt_s => $tblt_l) : ?>
+          <div class="hdr-acc" id="acc-<?php echo esc_attr($tblt_s); ?>">
+            <div class="hdr-acc-row">
+              <a role="menuitem" href="<?php echo esc_url(home_url('/' . $tblt_s . '/')); ?>"><?php echo esc_html($tblt_l); ?></a>
+              <button type="button" class="hdr-acc-btn" aria-label="Show <?php echo esc_attr($tblt_l); ?> books" aria-expanded="false" onclick="tbltToggleAcc('acc-<?php echo esc_attr($tblt_s); ?>')">
+                <svg viewBox="0 0 12 8" width="12" height="8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <div class="hdr-acc-list">
+              <?php foreach ($tblt_menu_books[$tblt_s] as $tblt_mb) : ?>
+              <a role="menuitem" href="<?php echo esc_url(home_url('/' . $tblt_s . '/' . $tblt_mb[1] . '/')); ?>"><?php echo esc_html($tblt_mb[0]); ?></a>
+              <?php endforeach; ?>
+            </div>
+          </div>
+          <?php endforeach; ?>
           <a role="menuitem" href="<?php echo esc_url(home_url('/all-books/')); ?>">All 66 Books</a>
           <a role="menuitem" href="<?php echo esc_url(home_url('/about/')); ?>">About</a>
           <a role="menuitem" class="yt-nav" href="<?php echo esc_url($tblt_yt); ?>" target="_blank" rel="noopener">Listen on <span class="yt-pill">YouTube</span></a>
