@@ -41,10 +41,16 @@ $tblt_yt        = 'https://www.youtube.com/@TheBibleLikeTotally';
       <div class="hdr-dd" id="ddAccount">
         <button type="button" class="hdr-icon-btn" aria-label="Account menu" aria-haspopup="true" aria-expanded="false" aria-controls="ddAccountPanel" onclick="tbltToggleDD('ddAccount')">
           <svg class="avatar-ico" viewBox="0 0 40 40" width="38" height="38" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="tbltAvGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#3B82D6"/>
+                <stop offset="1" stop-color="#1B2A4A"/>
+              </linearGradient>
+            </defs>
             <circle cx="20" cy="20" r="18.2" fill="#fff" stroke="#1B2A4A" stroke-width="2.4"/>
-            <circle cx="20" cy="20" r="14.4" fill="#C9921A"/>
-            <circle cx="20" cy="15.6" r="5.6" fill="#5B2D8E"/>
-            <path d="M8.9 30.6c1.2-5.2 5.5-8.2 11.1-8.2s9.9 3 11.1 8.2A14.4 14.4 0 0 1 20 34.4a14.4 14.4 0 0 1-11.1-3.8z" fill="#5B2D8E"/>
+            <circle cx="20" cy="20" r="14.4" fill="url(#tbltAvGrad)"/>
+            <circle cx="20" cy="15.6" r="5.6" fill="#0E9B8A"/>
+            <path d="M8.9 30.6c1.2-5.2 5.5-8.2 11.1-8.2s9.9 3 11.1 8.2A14.4 14.4 0 0 1 20 34.4a14.4 14.4 0 0 1-11.1-3.8z" fill="#0E9B8A"/>
           </svg>
         </button>
         <div class="hdr-panel hdr-panel-account" id="ddAccountPanel" role="menu">
