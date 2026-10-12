@@ -3,7 +3,7 @@ Theme Name: The Bible, Like Totally
 Theme URI: https://thebibleliketotally.com
 Author: The Bible, Like Totally
 Description: Custom theme that matches the GitHub-designed site (navy / teal / amber, Playfair Display + Nunito). Works with ProfilePress membership pages.
-Version: 1.0.17
+Version: 1.0.18
 Requires at least: 6.0
 Requires PHP: 7.4
 Text Domain: tblt
@@ -878,3 +878,6 @@ footer{background:var(--off-white) !important;color:var(--text-body,#2C3E50);bor
 .profilepress-myaccount-form-field.delete-avatar,
 .profilepress-myaccount-delete-cover-image-wrap,
 .profilepress-myaccount-delete-avatar-wrap{display:none !important}
+
+/* ── My Account: sidebar logo/avatar is not a link ── */
+.profilepress-myaccount-avatar a{pointer-events:none;cursor:default;text-decoration:none}
