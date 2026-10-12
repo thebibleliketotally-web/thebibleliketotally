@@ -69,6 +69,11 @@
     d.querySelector('button').setAttribute('aria-expanded', open ? 'true' : 'false');
   }
   var tbltToggleNavDD = tbltToggleDD;
+  function tbltToggleAcc(id) {
+    var a = document.getElementById(id); if (!a) return;
+    var open = a.classList.toggle('open');
+    a.querySelector('.hdr-acc-btn').setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
   function tbltSearch(form) {
     var q = form.q.value.trim();
     if (q) window.location.href = window.TBLT.allBooks + '?search=' + encodeURIComponent(q);
