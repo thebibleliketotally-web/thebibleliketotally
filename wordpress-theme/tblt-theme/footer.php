@@ -3,7 +3,7 @@
   <div class="footer-top">
     <div class="footer-brand">
       <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/logo.png" alt="The Bible, Like Totally">
-      <p>The whole Bible, but make it relatable. Real truth, real heart, and a totally chill voice so God's Word finally feels like it's talking to you.</p>
+      <p>Scripture for real life. Real truth with a totally chill vibe and it's like, God's Word feels like it's talking to you.</p>
       <div class="footer-social">
         <a href="https://www.facebook.com/thebible.liketotally/" target="_blank" class="social-btn" title="Facebook">📘</a>
         <a href="https://www.instagram.com/thebible_liketotally/" target="_blank" class="social-btn" title="Instagram">📸</a>
